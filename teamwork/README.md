@@ -22,4 +22,6 @@
 
 ## [X2 Tech/Work Report](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/X2_Tech-Work_Report.md)
 
+## [XX 建模练习](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/XX_%E5%BB%BA%E6%A8%A1%E7%BB%83%E4%B9%A0.md)
+
 
