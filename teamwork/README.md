@@ -14,7 +14,7 @@
 
 - [5、Product Backlog （产品特性）](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/Product_Backlog.md)
 
-- [6、Requirement specification（需求规格说明）]
+- 6、Requirement specification（需求规格说明）
   - [6.1 Usecase Diagram（用例图）](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/Requirement_Specification.md)
   - [6.2 Use Cases（用例+活动图）]()
   - [6.3 Domian Model（领域模型）]()
