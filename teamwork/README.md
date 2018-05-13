@@ -18,7 +18,7 @@
   - [6.1 Usecase Diagram（用例图）](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/Requirement_Specification.md)
   - [6.2 Use Cases（用例+活动图）]()
   - [6.3 Domian Model（领域模型）]()
-  - [6.4 State Model（状态模型）]()
+  - [6.4 State Model（状态模型）](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/img/uml_state.PNG)
   - [6.5 System Sequence Diagram（功能模型）](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/6.5_SSD_Team_Report.md)
 
 
