@@ -10,6 +10,6 @@
 ### 7.2.2 XX子系统数据课设计
 ### 7.2.x 第三方数据评审结果
 
-##7.3 API 设计
+## 7.3 API 设计
 
 [API设计文档](https://mealordersystem.docs.apiary.io)
