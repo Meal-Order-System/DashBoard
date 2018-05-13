@@ -8,6 +8,6 @@
 
 [15331241 毛子豪](https://blog.csdn.net/msoul_/article/details/79931661)
 
-[15331248 潘承远](https://blog.csdn.net/pan_chengyuan/article/details/79955100)
+[15331248 Github使用](https://blog.csdn.net/pan_chengyuan/article/details/79955100)
 
-[15331308 韦舒心](https://blog.csdn.net/leprechaun_/article/details/79955023)
+[15331308 UseCase学习](https://blog.csdn.net/leprechaun_/article/details/79955023)
