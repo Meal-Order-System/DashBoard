@@ -36,8 +36,7 @@
   - [8.2 REST API 设计规范](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/REST_API_%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.md)
 
 - X1 meet_recording
-  - [inception meeting (yy/mm/dd)](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/X1_meeting_record.md)
-  - [Iteration X meeting (yy/mm/dd)]()
+  - [inception meeting (2018/04/01)](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/X1_meeting_record.md)
 
 - X2 Tech/Work Report
   - [学号-title](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/X2_Tech-Work_Report.md)
