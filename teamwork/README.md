@@ -44,7 +44,8 @@
 
 - XX 建模练习
   
-  - [XX1 XX应用](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/XX1-Google%E7%BF%BB%E8%AF%91App%E4%B8%9A%E5%8A%A1%E6%8F%8F%E8%BF%B0.pdf)
+  - [XX1 Google翻译应用](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/XX1-Google%E7%BF%BB%E8%AF%91App%E4%B8%9A%E5%8A%A1%E6%8F%8F%E8%BF%B0.pdf)
   - XX2 建模要求
-    建模要求包括（用例图、XX业务或用例的活动图、XX领域模型、XX对象的状态图、XX场景的系统顺序图与操作协议）
+  
+    建模要求包括（用例图、Google翻译业务或用例的活动图、Google翻译领域模型、Google翻译对象的状态图、Google翻译场景的系统顺序图与操作协议）
   - [XX3 建模者答案与评价]()
