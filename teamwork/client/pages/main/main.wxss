@@ -1,0 +1,68 @@
+/* pages/main/main.wxss */
+
+/* pages/main/main.wxss */
+
+.container {
+  margin-top:10%;
+  align-items: center;
+  font-size: 15px;
+}
+
+.radio {
+  text-align: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  border:2px solid grey;
+  color: white;
+  background: grey;
+  padding-top: 4px;
+  width: 50px;
+  height: 46px;
+  transition: all 1.5s;
+}
+
+#menu {
+  position: relative;
+  float:left;
+  right:0px;
+  bottom: -70px;
+  color: transparent;
+}
+
+#record {
+  position: relative;
+  float:right;
+  left:0px;
+  bottom: 0px;
+  color: transparent;
+}
+
+#userInfo  {
+  position: relative;
+  float:right;
+  left:0px;
+  bottom: 80px;
+  color: transparent;
+}
+
+#menu-display {
+  position: relative;
+  float:left;
+  right:100px;
+  bottom:0px;
+}
+
+#record-display {
+  position: relative;
+  float:right;
+  left:100px;
+  bottom: 70px;
+}
+
+#userInfo-display  {
+  position: relative;
+  float:right;
+  left:0px;
+  bottom: 0px;
+}
