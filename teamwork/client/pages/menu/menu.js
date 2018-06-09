@@ -51,17 +51,11 @@ Page({
     showModalStatus: false,
     currentType: 0,
     currentIndex: 0,
-    sizeIndex: 0,
-    sugarIndex: 0,
-    temIndex: 0,
-    sugar: ['常规糖', '无糖', '微糖', '半糖', '多糖'],
-    tem: ['常规冰', '多冰', '少冰', '去冰', '温', '热'],
-    size: ['常规', '珍珠', '西米露'],
     cartList: [],
     sumMonney: 0,
-    cupNumber: 0,
+    totalNum: 0,
     showCart: false,
-    loading: false
+    loading: true
   },
 
   selectMenu: function (e) {
@@ -126,56 +120,40 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  selectInfo: function (e) {
+
+  addToCart: function (e) {
     var type = e.currentTarget.dataset.type;
     var index = e.currentTarget.dataset.index;
     this.setData({
-      showModalStatus: !this.data.showModalStatus,
       currentType: type,
-      currentIndex: index,
-      sizeIndex: 0,
-      sugarIndex: 0,
-      temIndex: 0
+      currentIndex: index
     });
-  },
-
-  chooseSE: function (e) {
-    var index = e.currentTarget.dataset.index;
-    var type = e.currentTarget.dataset.type;
-    if (type == 0) {
-      this.setData({
-        sizeIndex: index
-      });
-    }
-    if (type == 1) {
-      this.setData({
-        sugarIndex: index
-      });
-    }
-    if (type == 2) {
-      this.setData({
-        temIndex: index
-      });
-    }
-  },
-
-  addToCart: function () {
     var a = this.data
+    var isAdd = true;
     var addItem = {
       "name": a.listData[a.currentType].foods[a.currentIndex].name,
-      "price": a.listData[a.currentType].foods[a.currentIndex].specfoods[0].price,
-      "detail": a.size[a.sizeIndex] + "+" + a.sugar[a.sugarIndex] + "+" + a.tem[a.temIndex],
+      "price": a.listData[a.currentType].foods[a.currentIndex].price,
       "number": 1,
-      "sum": a.listData[a.currentType].foods[a.currentIndex].specfoods[0].price,
+      "sum": a.listData[a.currentType].foods[a.currentIndex].price,
     }
-    var sumMonney = a.sumMonney + a.listData[a.currentType].foods[a.currentIndex].specfoods[0].price;
+    var sumMonney = a.sumMonney + a.listData[a.currentType].foods[a.currentIndex].price;
     var cartList = this.data.cartList;
-    cartList.push(addItem);
+    for (var i = 0; i < cartList.length; i++) {
+      if (cartList[i].name == addItem.name) {
+        console.log(1);
+        isAdd = false;
+        cartList[i].number++;
+        cartList[i].sum += cartList[i].price;
+      }
+
+    }
+    if (isAdd)
+      cartList.push(addItem);
     this.setData({
       cartList: cartList,
       showModalStatus: false,
       sumMonney: sumMonney,
-      cupNumber: a.cupNumber + 1
+      totalNum: a.totalNum + 1
     });
     console.log(this.data.cartList)
   },
@@ -192,7 +170,8 @@ Page({
     this.setData({
       cartList: [],
       showCart: false,
-      sumMonney: 0
+      sumMonney: 0,
+      totalNum: 0
     });
   },
   addNumber: function (e) {
@@ -206,7 +185,7 @@ Page({
     this.setData({
       cartList: cartList,
       sumMonney: sum,
-      cupNumber: this.data.cupNumber + 1
+      totalNum: this.data.totalNum + 1
     });
   },
   decNumber: function (e) {
@@ -221,16 +200,16 @@ Page({
       cartList: cartList,
       sumMonney: sum,
       showCart: cartList.length == 0 ? false : true,
-      cupNumber: this.data.cupNumber - 1
+      totalNum: this.data.totalNum - 1
     });
   },
-  goBalance: function () {
+  goPay: function () {
     if (this.data.sumMonney != 0) {
       wx.setStorageSync('cartList', this.data.cartList);
       wx.setStorageSync('sumMonney', this.data.sumMonney);
-      wx.setStorageSync('cupNumber', this.data.cupNumber);
+      wx.setStorageSync('totalNum', this.data.totalNum);
       wx.navigateTo({
-        url: '../order/balance/balance'
+        url: '../pay/pay'
       })
     }
   },

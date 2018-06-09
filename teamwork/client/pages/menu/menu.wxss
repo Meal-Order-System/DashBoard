@@ -57,9 +57,24 @@
   margin-top:20rpx;
 }
 .plus-icon{
+  width: 46rpx;
+  height: 46rpx;
   float:right;
   color:#FF9C35;
-  font-size:46rpx;
+}
+.plus-icon2{
+  position: relative;
+  bottom: 4rpx;
+  width: 46rpx;
+  height: 46rpx;
+  float:right;
+  color:#FF9C35;
+}
+.minus-icon{
+  margin-left:15px;
+  width: 30rpx;
+  height: 30rpx;
+  color:#FF9C35;
 }
 .operate-bar{
   z-index: 1001; 
@@ -76,7 +91,8 @@
   
 }
 .gouwuche-icon{
-  font-size:40px;
+  width: 40px;
+  height: 40px;
   color:#87888E;
   margin-left:10px;
    position: relative;
@@ -90,7 +106,7 @@
   position: absolute;
   text-align: center;
   top:0px;
-  right:-5px;
+  right:17px;
 }
 
 .gouwuche-price{
@@ -204,6 +220,14 @@
   border-left:4px solid #FF9C35;
   margin-left: 20px;
 }
+.icon-lajitong{
+  position: relative;
+  top:13rpx;
+  width: 35rpx;
+  height: 35rpx;
+  float:right;
+  color:#FF9C35;
+}
 .icon-clear{
     color:#878787;
     float: right;
@@ -225,10 +249,6 @@
 .list-info-size{
   font-size:10px;
   color:#B1B1B1;
-}
-.icon-li-circle{
-  margin-left:15px;
-  font-size:20px
 }
 .font20{
   font-size:20px
