@@ -1,4 +1,5 @@
 // pages/menu/menu.js
+var ifAdd = false;
 Page({
 
   /**
@@ -125,6 +126,7 @@ Page({
    */
 
   addToCart: function (e) {
+    ifAdd = true;
     var type = e.currentTarget.dataset.type;
     var index = e.currentTarget.dataset.index;
     this.setData({
@@ -217,24 +219,29 @@ Page({
     }
   },
   toDetail(e) {
-    var type = e.currentTarget.dataset.type;
-    var index = e.currentTarget.dataset.index;
-    console.log("获取所选择的菜品"+index)
-    this.setData({
-      currentType: type,
-      currentIndex: index
-    });
-    var curr = this.data
-    console.log("你选择的菜品是" + this.data.listData[curr.currentType].foods[curr.currentIndex].name);
-    //wx.setStorageSync('dishName', "" + curr.listData[curr.currentType].foods[curr.currentIndex].name);
-    //wx.setStorageSync('month_sales', curr.listData[curr.currentType].foods[curr.currentIndex].month_sales); 
-    wx.setStorageSync('dishDetail', this.data.listData[curr.currentType].foods[curr.currentIndex]);
-    wx.setStorageSync('cartList', this.data.cartList);
-    wx.setStorageSync('sumMonney', this.data.sumMonney);
-    wx.setStorageSync('totalNum', this.data.totalNum);
-    wx.navigateTo({
-      url: '../dish/dish' //? Id = ${e.currentTarget.dataset.id }
-    })
+    console.log("before click" + " " + ifAdd);
+    if (!ifAdd) {
+      console.log(ifAdd);
+      var type = e.currentTarget.dataset.type;
+      var index = e.currentTarget.dataset.index;
+      //console.log("获取所选择的菜品"+index)
+      this.setData({
+        currentType: type,
+        currentIndex: index
+      });
+      var curr = this.data
+      //console.log("你选择的菜品是" + this.data.listData[curr.currentType].foods[curr.currentIndex].name);
+      //wx.setStorageSync('dishName', "" + curr.listData[curr.currentType].foods[curr.currentIndex].name);
+      //wx.setStorageSync('month_sales', curr.listData[curr.currentType].foods[curr.currentIndex].month_sales); 
+      wx.setStorageSync('dishDetail', this.data.listData[curr.currentType].foods[curr.currentIndex]);
+      wx.setStorageSync('cartList', this.data.cartList);
+      wx.setStorageSync('sumMonney', this.data.sumMonney);
+      wx.setStorageSync('totalNum', this.data.totalNum);
+      wx.navigateTo({
+        url: '../dish/dish' //? Id = ${e.currentTarget.dataset.id }
+      })
+    }
+    ifAdd = false;
   },
 
   /**
