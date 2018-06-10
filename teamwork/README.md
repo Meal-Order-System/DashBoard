@@ -1,4 +1,4 @@
-https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/mission2数据库设计.md# INDEX
+# INDEX
 
 
 ----------
