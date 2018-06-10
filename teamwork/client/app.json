@@ -4,7 +4,7 @@
     "pages/logs/logs",
     "pages/main/main",
     "pages/login-warning/login-warning",
-    "pages/list/list",
+    "pages/dish/dish",
     "pages/menu/menu"
   ],
   "window": {

@@ -10,18 +10,20 @@
   <scroll-view scroll-y="true" style='height:1200rpx;' bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="content" id="a{{index}}" wx:for="{{listData}}" wx:key="unique">
       <view class='list-tab'>{{item.name}}</view>
-      <view class='content-list' wx:for="{{item.foods}}" wx:key="unique" wx:for-item="items" wx:for-index="indexs">
+      <view class='content-list' wx:for="{{item.foods}}" wx:key="unique" wx:for-item="items" wx:for-index="indexs" data-type="{{index}}" data-index="{{indexs}}" bindtap="toDetail">
+
         <view class='list-image-box'>
           <image class="list-image" mode="widthFix" src='{{items.image_url}}'></image>
         </view>
+
         <view class='issue-name'>
           <view>{{items.name}}</view>
           <view style='margin-right:20rpx;color:#F05A86'>
             ¥ {{items.price}}.00
             <image class="plus-icon" data-type="{{index}}" data-index="{{indexs}}" bindtap="addToCart" src='../../img/plus.jpg'></image>
           </view>
-
         </view>
+        
       </view>
     </view>
   </scroll-view>

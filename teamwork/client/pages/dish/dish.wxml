@@ -1,0 +1,27 @@
+<!--pages/dish/dish.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="topLine"></view>
+<swiper indicator-dots class='header'>
+  <block wx:key="{{foodDetail.img_url}}">
+    <swiper-item>
+      <image src="{{foodDetail.img_url}}" class="full-img"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="content flex-row">
+  <view class='flex-col'>
+    <view>{{foodDetail.name}}</view>
+    <view class="color-red margin">￥{{foodDetail.price}}</view>
+    <view class="color-gray fs-16 margin">月销 {{foodDetail.month_sales}} 件</view>
+    <view class="color-red">评分 {{foodDetail.rating}} </view>
+  </view>
+</view>
+
+<view class="detail">
+  <view>产品详情</view>
+  <text>{{foodDetail.detail}}</text>
+<!--<template is="wxParse" data="{{wxParseData:intro.nodes}}"/>-->
+</view>
+
+<!--<button class="btn" type="warn" bindtap="goPay">立即支付</button>>

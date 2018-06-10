@@ -10,7 +10,8 @@ Page({
     userInfo:'个人\n信息',
     menuid:'menu',
     recordid:'record',
-    userInfoid:'userInfo'
+    userInfoid:'userInfo',
+    orderListid:'orderList'
   },
 
   bindMenu:function () {
@@ -27,6 +28,7 @@ Page({
 
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -41,7 +43,7 @@ Page({
     this.setData({
       menuid: 'menu-display',
       recordid: 'record-display',
-      userInfoid: 'userInfo-display'
+      userInfoid: 'userInfo-display',
     })
   },
 
