@@ -11,16 +11,9 @@ Page({
   },
   //事件处理函数
   bindEntrance:function() {
-    if (this.data.hasUserInfo) {
-      wx.navigateTo({
-        url: '../main/main',
-      })
-    } else {
-      wx.navigateTo({
-        url: '../login-warning/login-warning',
-      })
-    }
-    
+    wx.navigateTo({
+      url: '../main/main',
+    })
   },
   bindViewTap: function() {
     wx.navigateTo({
