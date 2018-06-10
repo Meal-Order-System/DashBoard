@@ -3,15 +3,11 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/main/main",
-    "pages/login-warning/login-warning",
-<<<<<<< HEAD
+
     "pages/dish/dish",
-    "pages/menu/menu"
-=======
     "pages/menu/menu",
     "pages/pay/pay",
     "pages/success/success"
->>>>>>> b49962fb4af0f3b70baabd3b48ff38c0b484898e
   ],
   "window": {
     "backgroundTextStyle": "light",
