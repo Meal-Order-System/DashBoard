@@ -2,6 +2,7 @@
 
 ![1.png-62.7kB][1]
 
+
 ## **食品管理系统**
 
 1 食品(food) : 食品id(food_id),食品名称(food_name),食品类别(food_category),评分(food_score),价格(food_price),详细描述信息(food_description),图片名称(food_pic)
@@ -24,6 +25,8 @@
 ## **CMD**
 
 ![1.png-110.6kB][2]
+
+
 
 ## **PMD**
 
