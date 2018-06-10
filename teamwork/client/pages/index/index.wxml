@@ -8,6 +8,6 @@
     </block>
   </view>
   <view class="entrance">
-    <text class="entrance-text" bindtap='bindEntrance'>{{motto}}</text>
+    <text class="entrance-text" bindtap='bindEntrance' wx:if='{{hasUserInfo}}'>{{motto}}</text>
   </view>
 </view>

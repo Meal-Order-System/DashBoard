@@ -1,4 +1,4 @@
-// pages/login-warning/login-warning.js
+// pages/success/success.js
 Page({
 
   /**
@@ -6,6 +6,12 @@ Page({
    */
   data: {
   
+  },
+
+  bindReturn: function() {
+    wx.navigateTo({
+      url: '../main/main',
+    })
   },
 
   /**
@@ -19,13 +25,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    setTimeout(function () {
-      wx.navigateTo({
-        url: "../index/index"
-      })},1000);
+  
   },
-
-
 
   /**
    * 生命周期函数--监听页面显示
