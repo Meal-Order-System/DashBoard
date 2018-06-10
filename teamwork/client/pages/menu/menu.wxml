@@ -72,3 +72,10 @@
     </view>
   </scroll-view>
 </view>
+<!-- 优惠宣传条 -->
+<view class='cut-bar' wx:if="{{sumMonney==0&&loading}}">
+  <label>满50立减3元(小程序点餐专享)</label>
+</view>
+<view class='cut-bar' wx:if="{{sumMonney<50&&sumMonney!=0&&loading}}">
+  <label>满50立减3元,还差{{50-sumMonney}}元,去凑单></label>
+</view>

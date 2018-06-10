@@ -1,0 +1,10 @@
+/* pages/login-warning/login-warning.wxss */
+
+.container {
+  align-items: center;
+  margin-top: 40%;
+}
+
+.warn {
+  font-size: 20px
+}

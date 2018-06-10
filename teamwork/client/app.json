@@ -4,8 +4,9 @@
     "pages/logs/logs",
     "pages/main/main",
     "pages/login-warning/login-warning",
-    "pages/list/list",
-    "pages/menu/menu"
+    "pages/menu/menu",
+    "pages/pay/pay",
+    "pages/success/success"
   ],
   "window": {
     "backgroundTextStyle": "light",

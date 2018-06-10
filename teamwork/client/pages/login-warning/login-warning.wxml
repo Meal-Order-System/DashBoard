@@ -1,0 +1,5 @@
+<!--pages/login-warning/login-warning.wxml-->
+
+<view class='container'>
+  <text class='warn'>请先登陆</text>
+</view>
