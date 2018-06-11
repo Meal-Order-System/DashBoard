@@ -24,13 +24,15 @@ Page({
       cutMonney: wx.getStorageSync('sumMonney')>49?3:0,
       totalNum: wx.getStorageSync('totalNum'),
     })
-    
   },
+  
   goSuccess:function(){
+    wx.setStorageSync('recordDetail', this.data),
     wx.navigateTo({
       url: '../success/success'
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

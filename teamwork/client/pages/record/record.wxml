@@ -1,0 +1,32 @@
+<!-- 订单查看 -->
+  <scroll-view scroll-y="true" style='height:1200rpx;' bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view wx:for="{{recordList}}" wx:key="unique" wx:for-item="items" wx:for-index="indexs" class='per-record' data-type="{{index}}" data-index="{{indexs}}" bindtap="goDetail">
+          
+          <label class='record-id'>No.{{items.recordID}}</label>
+          <view class='line-top-css'></view>
+          <view wx:if="{{items.goodsNum<3}}">
+            <view class='cart-list-box' wx:for="{{items.cartList}}" wx:key="unique">
+              <label class='dish-name'>{{item.name}}</label>
+              <label class='dish-num'>x {{item.number}}</label>
+            </view>
+          </view>
+
+          <!--订单中商品数目超过三个，只显示前两项
+          <view wx:if="{{items.goodsNum>2}}">
+            <view class='cart-list-box' wx:for="{{items.cartList}}" wx:key="unique">
+                <view class='list-info'>
+                  <view>{{item.name}}</view>
+                </view>
+                <view style='width:50%;padding:10px;'>
+                  <view style='float:right'>
+                    <view>x {{item.number}}</view>
+                  </view>
+                </view>
+            </view>
+          </view>  -->
+          <view class='line-bottom-css'></view>
+          <view class='order-cost'>  ￥{{items.sumMoney-items.cutMoney}}</view>
+          <view class='bottom-line'> 共{{items.goodsNum}}件商品，实付: </view>
+      </view>
+
+  </scroll-view>

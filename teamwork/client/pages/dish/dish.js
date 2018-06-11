@@ -1,10 +1,6 @@
 // pages/dish/dish.js
 var WXParse = require('../../wxParse/wxParse.js')
 //var { apiURL } = getApp()
-var detailList = wx.getStorageSync('dishDetail');
-var cartList = wx.getStorageSync('cartList');
-var totalMoney = wx.getStorageSync('sumMonney');
-var totalNum = wx.getStorageSync('totalNum');
 Page({
   /**
    * 页面的初始数据
@@ -30,10 +26,10 @@ Page({
       }
     })*/
     this.setData({
-      foodDetail: detailList,
-      currCart: cartList,
-      currMonty: totalMoney,
-      currNum: totalNum 
+      foodDetail: wx.getStorageSync('dishDetail'),
+      currCart: wx.getStorageSync('cartList'),
+      currMonty: wx.getStorageSync('sumMonney'),
+      currNum: wx.getStorageSync('totalNum')
     })
   },
   /*checkType (ex) {

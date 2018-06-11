@@ -1,5 +1,20 @@
 /* pages/dish/dish.wxss */
-
+.food-name{
+  text-align: left;
+  font-size: 25px;
+  font-weight: 600;
+  line-height:200%;
+}
+.food-price{
+  color: red;
+  font-size: 15px;
+  font-weight:600;
+  line-height: 150%;
+}
+.food-data{
+  color:gray;
+  font-size: 10px;
+}
 .header{
   width: 100%;
   height: 500rpx;
@@ -21,8 +36,15 @@
   background: #e4393c;
   color: white;
 }
-.detial{
-  padding: 20rpx 20rpx 140rpx;
+.detail{
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  line-height:200%;
+}
+.detail-content {
+  font-size:14px;
+  text-indent: 20px;
 }
 .btn{
   position: fixed;

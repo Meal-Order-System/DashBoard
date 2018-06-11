@@ -21,7 +21,9 @@ Page({
   },
 
   bindRecord:function () {
-
+    wx.navigateTo({
+      url: '../record/record',
+    })
   },
 
   bindUserInfo: function () {

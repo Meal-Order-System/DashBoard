@@ -219,9 +219,9 @@ Page({
     }
   },
   toDetail(e) {
-    console.log("before click" + " " + ifAdd);
+    //console.log("before click" + " " + ifAdd);
     if (!ifAdd) {
-      console.log(ifAdd);
+      //console.log(ifAdd);
       var type = e.currentTarget.dataset.type;
       var index = e.currentTarget.dataset.index;
       //console.log("获取所选择的菜品"+index)
@@ -229,10 +229,7 @@ Page({
         currentType: type,
         currentIndex: index
       });
-      var curr = this.data
-      //console.log("你选择的菜品是" + this.data.listData[curr.currentType].foods[curr.currentIndex].name);
-      //wx.setStorageSync('dishName', "" + curr.listData[curr.currentType].foods[curr.currentIndex].name);
-      //wx.setStorageSync('month_sales', curr.listData[curr.currentType].foods[curr.currentIndex].month_sales); 
+      var curr = this.data;
       wx.setStorageSync('dishDetail', this.data.listData[curr.currentType].foods[curr.currentIndex]);
       wx.setStorageSync('cartList', this.data.cartList);
       wx.setStorageSync('sumMonney', this.data.sumMonney);

@@ -7,7 +7,9 @@
     "pages/dish/dish",
     "pages/menu/menu",
     "pages/pay/pay",
-    "pages/success/success"
+    "pages/success/success",
+    "pages/record/record",
+    "pages/orderDetail/orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
