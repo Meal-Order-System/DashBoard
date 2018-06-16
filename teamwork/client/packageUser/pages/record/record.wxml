@@ -11,19 +11,17 @@
             </view>
           </view>
 
-          <!--订单中商品数目超过三个，只显示前两项
+          
           <view wx:if="{{items.goodsNum>2}}">
-            <view class='cart-list-box' wx:for="{{items.cartList}}" wx:key="unique">
-                <view class='list-info'>
-                  <view>{{item.name}}</view>
-                </view>
-                <view style='width:50%;padding:10px;'>
-                  <view style='float:right'>
-                    <view>x {{item.number}}</view>
-                  </view>
-                </view>
+            <view class='cart-list-box' wx:for="{{items.cartList}}"wx:for-index="i" wx:key="unique">
+              <view wx:if="{{i<2}}">
+                <label class='dish-name'>{{item.name}}</label>
+                <label class='dish-num'>x {{item.number}}</label>
+              </view>
             </view>
-          </view>  -->
+            <view class='apos'>...</view>
+          </view>
+
           <view class='line-bottom-css'></view>
           <view class='order-cost'>  ￥{{items.sumMoney-items.cutMoney}}</view>
           <view class='bottom-line'> 共{{items.goodsNum}}件商品，实付: </view>

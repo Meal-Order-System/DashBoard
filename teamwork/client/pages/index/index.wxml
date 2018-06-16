@@ -8,6 +8,7 @@
     </block>
   </view>
   <view class="entrance">
-    <text class="entrance-text" bindtap='bindEntrance' wx:if='{{hasUserInfo}}'>{{motto}}</text>
+    <label class="entrance-text" bindtap='bindEntrance' wx:if='{{hasUserInfo}}'>{{motto}}</label>
+    <label class="entrance-text" bindtap='bindRestaurant' wx:if='{{hasUserInfo}}'>商家</label>
   </view>
 </view>

@@ -18,5 +18,13 @@
 
 .entrance {
   margin-top: 200px;
+  float: left;
 }
 
+.entrance-restaurant{
+  float:right;
+}
+
+.entrance-text {
+  margin:15px;
+}

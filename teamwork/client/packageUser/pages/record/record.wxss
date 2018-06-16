@@ -1,4 +1,6 @@
-
+.apos {
+  color:gray;
+}
 .per-record {
   padding:5px 15px;
   margin-bottom: 30px;

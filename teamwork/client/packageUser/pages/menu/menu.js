@@ -1,4 +1,5 @@
 // pages/menu/menu.js
+var apiURL= 'https://meal.mlg.kim'
 var ifAdd = false;
 Page({
 
@@ -7,46 +8,6 @@ Page({
    */
   data: {
     listData: [
-      {
-        "name": "热销推荐",
-        "foods": [
-          {
-            "image_url": "",
-            "rating": 4.2,
-            "month_sales": 15,
-            "rating_count": 5,
-            "image_path": "",
-            "name": "隆江猪脚饭",
-            "price": 30,
-            "detail": "猪脚饭"
-          }
-        ]
-      },
-      {
-        "name": "人气单品",
-        "foods": [
-          {
-            "image_url": "",
-            "rating": 4,
-            "month_sales": 6,
-            "rating_count": 3,
-            "image_path": "",
-            "name": "北京烤鸭饭",
-            "price": 25,
-            "detail":"烤鸭饭"
-          },
-          {
-            "image_url": "",
-            "rating": 4.296666666666666,
-            "month_sales": 215,
-            "rating_count": 59,
-            "image_path": "",
-            "name": "猪杂汤饭",
-            "price": 15,
-            "detail":"猪杂汤饭"
-          }
-        ]
-      }
     ],
     activeIndex: 0,
     toView: 'a0',
@@ -245,7 +206,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.request(
+      {
+      url:`${apiURL}/food`,
+      success: (res) => {
+        this.setData({
+          listData: res.data
+        })
+      }
+    })
   },
 
   /**

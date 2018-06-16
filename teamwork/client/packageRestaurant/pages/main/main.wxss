@@ -1,0 +1,23 @@
+
+
+.swiper-tab{
+    width: 100%;
+    border-bottom: 2rpx solid #ccc;
+    text-align: center;
+    height: 88rpx;
+    line-height: 88rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+.swiper-tab-item{
+    width: 50%; 
+    color:#434343;
+}
+.active{
+    color:orange;
+    border-bottom: 4rpx solid orange;
+}
+swiper{
+  text-align: center;
+}

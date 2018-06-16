@@ -1,16 +1,33 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/main/main",
-
-    "pages/dish/dish",
-    "pages/menu/menu",
-    "pages/pay/pay",
-    "pages/success/success",
-    "pages/record/record",
-    "pages/orderDetail/orderDetail"
+    "pages/logs/logs"
   ],
+
+  "subPackages": [
+    {
+      "root": "packageUser",
+      "pages": [
+        "pages/main/main",
+        "pages/dish/dish",
+        "pages/menu/menu",
+        "pages/pay/pay",
+        "pages/success/success",
+        "pages/record/record",
+        "pages/orderDetail/orderDetail"
+      ]
+    },
+    {
+      "root": "packageRestaurant",
+      "pages": [
+        "pages/main/main",
+        "pages/table/table",
+        "pages/orderList/orderList",
+        "pages/food/food"
+      ]
+    }
+  ],
+  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

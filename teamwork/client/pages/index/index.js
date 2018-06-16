@@ -1,10 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
-    motto: '现在开始',
+    motto: '点餐',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -12,14 +11,23 @@ Page({
   //事件处理函数
   bindEntrance:function() {
     wx.navigateTo({
-      url: '../main/main',
+      url: '../../packageUser/pages/main/main',
     })
   },
+
+  bindRestaurant:function() {
+    wx.navigateTo({
+      url:'../../packageRestaurant/pages/main/main',
+    })
+  },
+
+
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

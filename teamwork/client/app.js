@@ -35,5 +35,6 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  apiURL:'https://meal.mlg.kim'
 })

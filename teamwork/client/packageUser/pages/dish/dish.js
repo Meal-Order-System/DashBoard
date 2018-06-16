@@ -1,5 +1,5 @@
 // pages/dish/dish.js
-var WXParse = require('../../wxParse/wxParse.js')
+
 //var { apiURL } = getApp()
 Page({
   /**
