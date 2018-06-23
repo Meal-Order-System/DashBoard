@@ -1,0 +1,28 @@
+.button-setting {
+  background-color:green;
+  color:white;
+  position:fixed;
+  bottom:0px;
+  width:100%;
+}
+.section{
+    margin:0rpx 20rpx 40rpx 20rpx;
+    border: 2rpx solid gainsboro;
+    border-radius: 40rpx;
+    height: 80rpx;
+}
+
+.section-title{
+  margin-left: 20px;
+  font-weight: 900px;
+}
+
+input{
+    margin-left: 25rpx;
+    margin-right: 25rpx;
+    height: 80rpx;
+}
+.ph{
+    color: gainsboro;
+    font-size: 0.875em;
+}

@@ -185,7 +185,7 @@ Page({
       //console.log(ifAdd);
       var type = e.currentTarget.dataset.type;
       var index = e.currentTarget.dataset.index;
-      //console.log("获取所选择的菜品"+index)
+      console.log("获取所选择的菜品"+index)
       this.setData({
         currentType: type,
         currentIndex: index

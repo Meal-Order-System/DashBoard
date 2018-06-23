@@ -1,18 +1,45 @@
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    foodList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var list=wx.getStorageSync('currFoodList');
+    this.setData({
+      foodList:list,
+    })
   },
+
+  formSubmit: function (e) {
+    var tmp = e.detail.value;
+    var item=[];
+    item={
+      'foodName':tmp.name,
+      'foodPrice':tmp.price,
+      'foodDetail':tmp.detail
+    }
+    var foodtype=tmp.type;
+
+    var typelist=this.data.foodList[foodtype].list;
+    var key='foodList['+foodtype+"].list"
+    typelist.push(item);
+    this.setData({
+      [key]:typelist,
+    }),
+    wx.setStorageSync('newList', this.data.foodList)
+    wx.redirectTo({
+      url: '../main/main?currentTab=1',
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

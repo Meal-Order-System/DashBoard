@@ -4,3 +4,115 @@
     <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">菜品管理
     </view>
 </view>
+
+
+<!--设置每个tab的内容-->
+<swiper current="{{currentTab}}" duration="300"  bindchange="swiperTab"  style="height:{{winHeight+'px'}}">
+    <!--餐台管理界面-->
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scroll-h" style="height:{{winHeight+'px'}}">
+       <view wx:for="{{tableList}}" wx:for-item="table" wx:key="unique">
+        <view wx:for-index="index" data-index="{{index}}"  bindtap="toggleTable">
+          <view class="table-cells">
+            <view class="table-cell {{showTable[index]?'active-table':''}}">
+
+              <!--餐台状态控制-->
+              <view class="table-state">
+                <!--空闲-->
+                <view wx:if="{{table.tableState==0}}">
+                  <image class="state-image-free" mode="widthFix" src='../../img/finished.png.jpg'></image>
+                </view>
+                <!--存在未上的菜（未完成订单）-->
+                <view wx:if="{{table.tableState==1}}">
+                  <image class="state-image" mode="widthFix" src='../../img/greenpoint.jpg'></image>
+                </view>
+                <!--订单已完成 待结账-->
+                <view wx:if="{{table.tableState==2}}">
+                  <button class='pay-button' wx:for-index="index" data-index="{{index}}" bindtap="finishPay">结账</button>
+                </view>
+              </view>
+
+              
+              <view class="table-cell-title">餐台{{table.tableID}}</view>
+              <view wx:if="{{table.tableState!=0}}" class="table-cost-txt"> 总消费：
+                <text class="table-cost-num">￥{{table.totalCost}}</text>
+              </view>
+              <view wx:if="{{table.tableState==0}}" class="table-cost-txt">空闲</view>
+              <view wx:if="{{showTable[index]}}">
+                <image class="state-image-expand" mode="widthFix" src='../../img/expand.png'></image>
+              </view>
+              <view wx:if="{{!showTable[index]}}">
+                <image class="state-image-expand" mode="widthFix" src='../../img/up.png'></image>
+              </view>
+
+
+            </view>
+          </view>
+        </view>
+        
+        <!--查看当前餐台的订单情况-->
+        <view class="check-show" wx:if="{{showTable[index]}}" wx:for-index="index" data-index="{{index}}" bindtap="changeTableState">
+            <view wx:if="{{table.tableState==0}}">
+              <view class="table-free">当前餐台空闲！</view>
+            </view>
+
+            <scroll-view scroll-y="true" class="scroll-h" style="height:200px">
+              <view class="order-cells" wx:for="{{table.orderList}}" wx:for-item="order" wx:key="unique">
+                <view class="order-cell">
+                  <view class="order-num">订单{{order.orderID}} </view>
+                  <button wx:if="{{order.orderState==0}}" wx:for-index="orderindex" data-orderid="{{index}}" bindtap="finishOrder" class="to-finish">完成订单</button>
+                  <button wx:if="{{order.orderState==1}}" class="finished-order">已完成</button>
+                </view>
+
+                <view class='line-bottom-css'></view> 
+
+                <view class='food-info' wx:for="{{order.orderDetail}}" wx:for-item="dish" wx:key="unique">
+                  <text class='food-name'>{{dish.foodName}}</text>
+                  <text class='food-price' decode="{{true}}" space="{{true}}">￥{{dish.foodPrice}}&nbsp;&nbsp;                          <text class='food-num'>X{{dish.foodNum}}</text>
+                  </text>
+                </view>
+
+                  
+
+              </view>
+            </scroll-view>
+
+        </view>
+       </view>   
+      </scroll-view>                                                          
+    </swiper-item>
+    
+    <swiper-item>
+    <!--显示类别栏-->
+      <view class="menu">
+        <view wx:for="{{foodList}}" wx:key="unique">
+          <view  class="{{index==currType?'name-selected':'name-unselect'}}"  data-index="{{index}}" bindtap='selectType'>
+            <view class="list-menu-name">{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+      <!--显示现有的菜单-->
+      <view wx:for="{{foodList}}" wx:for-index="index" wx:key="unique">
+        <view wx:if="{{index==currType}}" data-index="{{index}}" bindtap='selectType'>
+
+          <view class='type-content' wx:for="{{item.list}}" wx:key="unique" wx:for-item="food" wx:for-index="indexs"  data-dish="{{indexs}}">
+          
+            <view class='food-image-box'>
+              <image class='food-image' mode="widthFix" src="{{food.img_url}}"></image>
+            </view>
+
+            <view class='food-box'>
+              <view class='food-name'>{{food.foodName}}</view>
+              <view style='margin-right:20rpx;color:#F05A86'>¥{{food.foodPrice}} </view>
+              <!--删除菜品-->
+              <image class='trash-image'  data-dish="{{indexs}}" bindtap="deleteFood" src='../../img/trash.png' > </image>
+            </view>
+
+          </view>
+        </view>
+      </view>
+
+      <!--添加菜品-->
+      <button class='add-food' bindtap='toAdd'>增加菜品</button>
+    </swiper-item>
+</swiper>

@@ -4,10 +4,12 @@
           
           <label class='record-id'>No.{{items.recordID}}</label>
           <view class='line-top-css'></view>
+          
           <view wx:if="{{items.goodsNum<3}}">
             <view class='cart-list-box' wx:for="{{items.cartList}}" wx:key="unique">
               <label class='dish-name'>{{item.name}}</label>
               <label class='dish-num'>x {{item.number}}</label>
+              <label class='dish-num'>￥ {{item.price}}</label>
             </view>
           </view>
 
@@ -17,6 +19,7 @@
               <view wx:if="{{i<2}}">
                 <label class='dish-name'>{{item.name}}</label>
                 <label class='dish-num'>x {{item.number}}</label>
+                <label class='dish-num'>￥ {{item.price}}</label>
               </view>
             </view>
             <view class='apos'>...</view>
