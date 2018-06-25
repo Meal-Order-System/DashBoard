@@ -20,7 +20,7 @@ Page({
     sumMonney: 0,
     totalNum: 0,
     showCart: false,
-    loading: true
+    loading: false
   },
 
   selectMenu: function (e) {
@@ -206,13 +206,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.showLoading({
+      title: '努力加载中',
+    })
     wx.request(
       {
       url:`${apiURL}/food`,
       success: (res) => {
+        wx.hideLoading();
         console.log(res.data);
-        this.setData({
-          listData: res.data
+        that.setData({
+          listData: res.data,
+          loading: true
         })
       }
     })

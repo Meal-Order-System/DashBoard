@@ -2,6 +2,12 @@
 
 /* pages/main/main.wxss */
 
+page {
+  display: block;
+  min-height: 100%;
+  background-color: #abdcff;
+}
+
 .container {
   margin-top:10%;
   align-items: center;
@@ -15,7 +21,6 @@
   border-radius: 50%;
   border:2px solid grey;
   color: white;
-  background: grey;
   padding-top: 4px;
   width: 50px;
   height: 46px;
