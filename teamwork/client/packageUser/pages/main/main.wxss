@@ -9,7 +9,7 @@ page {
 }
 
 .container {
-  margin-top:10%;
+  margin-top:20%;
   align-items: center;
   font-size: 15px;
 }
@@ -19,12 +19,13 @@ page {
   margin-top:10px;
   margin-bottom: 10px;
   border-radius: 50%;
-  border:2px solid grey;
-  color: white;
+  color: black;
   padding-top: 4px;
   width: 50px;
   height: 46px;
-  transition: all 1.5s;
+  transition: all 1.0s;
+  background-position: 50% 50%;
+  background-size: 50px 50px;
 }
 
 #menu {
@@ -56,6 +57,7 @@ page {
   float:left;
   right:100px;
   bottom:0px;
+  background-image: url('https://meal.mlg.kim//images/OlYKxSwXrerGqeMXRjSZykn_.png');
 }
 
 #record-display {
@@ -63,6 +65,7 @@ page {
   float:right;
   left:100px;
   bottom: 70px;
+  background-image: url('https://meal.mlg.kim//images/YQTsBk45lPRvCjIHfzFuowGm.png');
 }
 
 #userInfo-display  {
@@ -70,4 +73,13 @@ page {
   float:right;
   left:0px;
   bottom: 0px;
+  background-image: url('https://meal.mlg.kim//images/oEwV_rI-6STkcoKf2YSH-tj-.png');
+}
+
+.logo {
+  float:left;
+  position: absolute;
+  margin-top: 50px;
+  width: 200rpx;
+  height: 200rpx;
 }

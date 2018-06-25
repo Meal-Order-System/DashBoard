@@ -14,7 +14,6 @@ page{
   width:75%;
   background:#353535;
   height: 100%; 
-  
 }
 .gouwuche-icon{
   width: 40px;
@@ -44,7 +43,7 @@ page{
 }
 .submit-btn{
   height:100%;
-  background:#F7F7F7;
+  background:#60cefc;
   width:25%;
   display:flex;
 }
@@ -54,7 +53,7 @@ page{
   margin:auto;
 }
 .activity-color{
-  color:#FF9C35;
+  color:#60cefc;
 }
 .submit-btn{
   height:100%;
@@ -64,7 +63,7 @@ page{
 }
 
 .activity-color-bg{
-  background:#FF9C35;
+  background:#60cefc;
 }
 
 .cart-list-box{

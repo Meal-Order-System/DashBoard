@@ -1,6 +1,7 @@
 <!--pages/main.wxml-->
 
 <view class="container">
+  <image class="logo" src="../../img/logo.png" mode="cover"></image>
   <view class="radio" id='{{menuid}}' bindtap='bindMenu'>
     <text>{{menu}}</text>
   </view>

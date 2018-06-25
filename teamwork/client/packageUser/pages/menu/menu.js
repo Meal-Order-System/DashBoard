@@ -212,7 +212,7 @@ Page({
     })
     wx.request(
       {
-      url:`${apiURL}/food`,
+      url:`${apiURL}/user/food`,
       success: (res) => {
         wx.hideLoading();
         console.log(res.data);
