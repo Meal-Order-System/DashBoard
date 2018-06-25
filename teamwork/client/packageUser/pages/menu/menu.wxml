@@ -13,7 +13,7 @@
       <view class='content-list' wx:for="{{item.foods}}" wx:key="unique" wx:for-item="items" wx:for-index="indexs" data-type="{{index}}" data-index="{{indexs}}" bindtap="toDetail">
 
         <view class='list-image-box'>
-          <image class="list-image" mode="widthFix" src='{{items.image_url}}'></image>
+          <image class="list-image" mode="widthFix" src='{{items.image_path}}'></image>
         </view>
 
         <view class='issue-name'>
