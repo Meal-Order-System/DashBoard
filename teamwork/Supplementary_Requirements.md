@@ -1,6 +1,6 @@
-﻿## UseCase 图
+﻿##UseCase 图
 ![UseCase图](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/img/Ordering_System_UseCase.png)
-## UseCase 详情描述
+##UseCase 详情描述
 
 - **注册/登录** 
 顾客、店主可以注册系统账号，并输入正确的账号密码进行登录，提供找回密码的功能。
