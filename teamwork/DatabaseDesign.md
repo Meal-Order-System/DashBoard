@@ -25,11 +25,7 @@
 4 一个订单对应一条评价
 5 一个顾客对应多条评价
 
-## **ER图(Navicat)**
-![1.png-71.3kB][1]
 
-
-  [1]: http://static.zybuluo.com/panchy7/w9ke902o2ca5nni0fqox5so5/1.png
 
 ## **ER图(MySQL)**
 
