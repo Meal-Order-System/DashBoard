@@ -23,7 +23,7 @@ Page({
       sumMoney: currDetail.sumMoney,
       cutMoney: currDetail.cutMoney,
       goodsNum: currDetail.goodsNum,
-      currCart : currDetail.cartList
+      currCart : currDetail.currCart
     })
     console.log(this.data.recordID);
   },

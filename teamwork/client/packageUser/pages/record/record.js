@@ -1,5 +1,6 @@
 var app = getApp();
-var isFirst=true;
+//var isFirst=true;
+var apiURL ='https://meal.mlg.kim'
 Page({
   /**
    * 页面的初始数据
@@ -15,34 +16,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (!isFirst) {
+    wx.request({
+      url: `${apiURL}/user/order?openid=test`,
+      success: (res) => {
+        this.setData({
+          recordList: res.data,
+        })
+      }
+    })
+
+    /*if (!isFirst) {
       var reData = wx.getStorageSync('currData');
       this.setData({
         recordList : reData.recordList,
         recordNum : reData.recordNum,
         currIndex :reData.currIndex
       })
-    }
-    var data =wx.getStorageSync('reDetail');
+    }*/
+
+    var data = wx.getStorageSync('reDetail');
     console.log(data.orderTime);
     var addItem = {
-      "recordID": this.data.recordNum+1,
-      "orderTime":data.orderTime,
-      "sumMoney":data.sumMoney,
-      "cutMoney":data.cutMoney,
-      "goodsNum":data.goodsNum,
-      "cartList":data.cartList,
+      "recordID": this.data.recordNum + 1,
+      "orderTime": data.orderTime,
+      "sumMoney": data.sumMoney,
+      "cutMoney": data.cutMoney,
+      "goodsNum": data.goodsNum,
+      "currCart": data.cartList,
     }
     //console.log("push前记录的条数" + this.data.recordNum);
     var recordList = this.data.recordList;
     recordList.push(addItem);
     this.setData({
       recordList: recordList,
-      recordNum : this.data.recordNum+1
+      recordNum: this.data.recordNum + 1
     })
     //console.log("push后记录的条数" + this.data.recordNum);
-    wx.setStorageSync('currData',this.data);
-    isFirst=false;
+    //wx.setStorageSync('currData', this.data);
+    //isFirst=false;
+
+    /*wx.request({
+      url: `${apiURL}/user/order?openid=test`,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: { data: this.data },
+      success: (res) => {
+        if (res.data.result) {
+          consloe.log('show data post' + res.data)
+        }
+      }
+    })*/
+
   },
 
   goDetail: function(e) {

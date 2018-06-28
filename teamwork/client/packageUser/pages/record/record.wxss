@@ -16,6 +16,7 @@
   font-size:12px;
   float:right;
 }
+
 .order-cost{
   font-weight: 900;
   font-size:14px;
@@ -25,7 +26,7 @@
  
 .line-top-css {
   height: 1px;
-  background: orange;
+  background: #FF9C35;
   margin-left:20px;
   margin-top:15px;
   margin-bottom: 15px;
@@ -33,7 +34,7 @@
 
 .line-bottom-css {
   height: 1px;
-  background: orange;
+  background: #FF9C35;
   margin-top:15px;
   margin-bottom: 15px;
 }

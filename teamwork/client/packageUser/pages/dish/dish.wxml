@@ -2,9 +2,9 @@
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="topLine"></view>
 <swiper indicator-dots class='header'>
-  <block wx:key="{{foodDetail.img_url}}">
+  <block wx:key="{{foodDetail.image_path}}">
     <swiper-item>
-      <image src="{{foodDetail.img_url}}" class="full-img"/>
+      <image src="{{foodDetail.image_path}}" class="full-img"/>
     </swiper-item>
   </block>
 </swiper>
@@ -17,7 +17,7 @@
   </view>
 </view>
 
-<view class="detail">产品详情</view>
+<button class="detail">产品详情</button>
   <view class="detail-content">{{foodDetail.detail}}</view>
 <!--<template is="wxParse" data="{{wxParseData:intro.nodes}}"/>-->
 

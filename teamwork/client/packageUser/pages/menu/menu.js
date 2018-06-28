@@ -183,20 +183,17 @@ Page({
     //console.log("before click" + " " + ifAdd);
     if (!ifAdd) {
       //console.log(ifAdd);
-      var type = e.currentTarget.dataset.type;
+      var dish_type = e.currentTarget.dataset.type;
       var index = e.currentTarget.dataset.index;
-      console.log("获取所选择的菜品"+index)
+      console.log("获取所选择的菜品"+dish_type+index)
       this.setData({
-        currentType: type,
+        currentType: dish_type,
         currentIndex: index
       });
       var curr = this.data;
       wx.setStorageSync('dishDetail', this.data.listData[curr.currentType].foods[curr.currentIndex]);
-      wx.setStorageSync('cartList', this.data.cartList);
-      wx.setStorageSync('sumMonney', this.data.sumMonney);
-      wx.setStorageSync('totalNum', this.data.totalNum);
       wx.navigateTo({
-        url: '../dish/dish' //? Id = ${e.currentTarget.dataset.id }
+        url: '../dish/dish'
       })
     }
     ifAdd = false;

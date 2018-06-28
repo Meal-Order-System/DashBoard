@@ -34,6 +34,7 @@ Page({
       goodsNum: data.totalNum,
       orderTime: time,
     })
+    
   },
 
   /**

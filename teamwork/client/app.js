@@ -34,7 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    apiURL: 'https://meal.mlg.kim'
   },
-  apiURL:'https://meal.mlg.kim'
 })
