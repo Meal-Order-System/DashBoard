@@ -5,6 +5,14 @@
   bottom:0px;
   width:100%;
 }
+
+.upload-picture {
+  width:100px;
+  height:100px;
+  margin-top:16px;
+  margin-left:20px;
+}
+
 .section{
     margin:0rpx 20rpx 40rpx 20rpx;
     border: 2rpx solid gainsboro;

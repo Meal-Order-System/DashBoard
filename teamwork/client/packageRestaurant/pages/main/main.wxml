@@ -32,7 +32,7 @@
                 </view>
               </view>
 
-              
+              <!--餐台信息-->
               <view class="table-cell-title">餐台{{table.tableID}}</view>
               <view wx:if="{{table.tableState!=0}}" class="table-cost-txt"> 总消费：
                 <text class="table-cost-num">￥{{table.totalCost}}</text>
@@ -55,25 +55,37 @@
             <view wx:if="{{table.tableState==0}}">
               <view class="table-free">当前餐台空闲！</view>
             </view>
-
+            <!--订单状态管理-->
             <scroll-view scroll-y="true" class="scroll-h" style="height:200px">
-              <view class="order-cells" wx:for="{{table.orderList}}" wx:for-item="order" wx:key="unique">
+              <view class="order-cells" wx:for="{{table.orderList}}" wx:for-item="order" wx:key="unique" data-index="{{index}}" wx:for-index="orderindex" data-orderid="{{orderindex}}">
                 <view class="order-cell">
                   <view class="order-num">订单{{order.orderID}} </view>
-                  <button wx:if="{{order.orderState==0}}" wx:for-index="orderindex" data-orderid="{{index}}" bindtap="finishOrder" class="to-finish">完成订单</button>
+                  <button wx:if="{{order.orderState==0}}" wx:for-index="orderindex" data-index="{{index}}" data-orderid="{{orderindex}}" bindtap="finishOrder" class="to-finish">完成订单</button>
                   <button wx:if="{{order.orderState==1}}" class="finished-order">已完成</button>
                 </view>
 
                 <view class='line-bottom-css'></view> 
-
-                <view class='food-info' wx:for="{{order.orderDetail}}" wx:for-item="dish" wx:key="unique">
+                <!--dish状态管理-->
+                <view class='food-info' wx:for="{{order.orderDetail}}" wx:for-item="dish" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}" wx:key="unique">
                   <text class='food-name'>{{dish.foodName}}</text>
-                  <text class='food-price' decode="{{true}}" space="{{true}}">￥{{dish.foodPrice}}&nbsp;&nbsp;                          <text class='food-num'>X{{dish.foodNum}}</text>
-                  </text>
+                  <view class='food-price' decode="{{true}}" space="{{true}}">￥{{dish.foodPrice}}
+                    <text class='food-num'>X{{dish.foodNum}}</text>
+                    <button wx:if="{{dish.foodState==0}}" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}" bindtap="finishDish" class='dishing'>制作中</button>
+                    <button wx:if="{{dish.foodState==1}}" class='dish-finish'>已完成</button>
+
+                    <!--开始制作||取消该菜品-->
+                    <button wx:if="{{dish.foodState==2}}" class='dish-wait' data-status="open" bindtap="powerDrawer">等待中</button>
+                    <view class='drawer-screen' bindtap="powerDrawer" data-status="close" wx:if="{{showModalStatus}}"></view>
+                    <view animation="{{animationData}}" class='drawer-box' wx:if="{{showModalStatus}}">
+                      <view class='drawer-title'>{{dish.foodName}}</view>
+                        <view class='drawer-content' bindtap="powerDrawer" data-status="close">
+                          <button class='deal-button' hover-class='hover-deal-button' bindtap="cancelDish" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}">取消</button>
+                          <button class='deal-button' hover-class='hover-deal-button' bindtap="prepareDish" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}">准备</button>
+                        </view>
+                      
+                    </view>
+                  </view>
                 </view>
-
-                  
-
               </view>
             </scroll-view>
 
@@ -96,9 +108,8 @@
         <view wx:if="{{index==currType}}" data-index="{{index}}" bindtap='selectType'>
 
           <view class='type-content' wx:for="{{item.list}}" wx:key="unique" wx:for-item="food" wx:for-index="indexs"  data-dish="{{indexs}}">
-          
             <view class='food-image-box'>
-              <image class='food-image' mode="widthFix" src="{{food.img_url}}"></image>
+              <image class='food-image' mode="widthFix" src="{{food.img_url}}">test{{food.img_url}}</image>
             </view>
 
             <view class='food-box'>
@@ -106,6 +117,8 @@
               <view style='margin-right:20rpx;color:#F05A86'>¥{{food.foodPrice}} </view>
               <!--删除菜品-->
               <image class='trash-image'  data-dish="{{indexs}}" bindtap="deleteFood" src='../../img/trash.png' > </image>
+              <!--修改菜品
+              <image class='trash-image'  data-dish="{{indexs}}" bindtap="modifyFood" src='../../img/modify.jpg' > </image>-->
             </view>
 
           </view>

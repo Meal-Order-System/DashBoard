@@ -2,7 +2,30 @@
 page{
   background: #F8F8F8
 }
-
+.show-cart{
+  display:flex;
+  justify-content: space-between;
+}
+.food-price {
+  padding:13px 13px;
+  position:fixed;
+  right:100px;
+}
+.food-num {
+  padding:13px 13px;
+  color:gray;
+  position:fixed;
+  right:80px;
+}
+.food-state{
+  background-color:orange;
+  color:white;
+  font-size:14px;
+  width:70px;
+  height:30px;
+  margin-right:0px;
+  margin-top:5px;
+}
 .record-item{
   
   height:30px;
@@ -64,15 +87,18 @@ page{
 }
 
 .cart-list-box{
+  height:40px;
+  font-size:14px;
+  padding:5px, 5px;
+  text-align:center;
   background:#FFFFFF;
-  display:flex;
-  font-size:15px;
   border-bottom:1px #E3E3E3 solid;
+  margin-right:0px;
 }
 .list-info{
-  width:50%;
-  margin-top:15px;
-  padding:5px 15px;
+  padding:12px,12px;
+  font-size:16px;
+  
 }
 .list-info-size{
   font-size:12px;

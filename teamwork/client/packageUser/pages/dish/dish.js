@@ -7,29 +7,14 @@ Page({
    */
   data: {
     foodDetail: [],
-    currCart: [],
-    currMoney: 0,
-    currNum: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   /* wx.request({
-      url: `${apiURL}/goods/${data.ID}`,
-      success: (res) => {
-        this.setData({
-          goods: res.data
-        })
-        WXParse.wxParse('intro', 'html', this.data.goods.Intro.replace(/="/g, '="' + appURL),this, 10)
-      }
-    })*/
     this.setData({
       foodDetail: wx.getStorageSync('dishDetail'),
-      currCart: wx.getStorageSync('cartList'),
-      currMonty: wx.getStorageSync('sumMonney'),
-      currNum: wx.getStorageSync('totalNum')
     })
   },
   /*checkType (ex) {
@@ -37,29 +22,7 @@ Page({
       typeIndex: ex.target.dataset.id
     })
   },*/
-  subNum () {
-    if (this.data.currNum == 1) {
-      return false
-    }
-    this.setData({
-      currNum: this.data.currNum-1
-    })
-  },
-  addNum () {
-    this.setData({
-      currNum: this.data.currNum+1
-    })
-  },
-  goPay() {
-    if (this.currCart != null) {
-      wx.setStorageSync('cartList', this.data.currCart);
-      wx.setStorageSync('sumMonney', this.data.currMoney);
-      wx.setStorageSync('totalNum', this.data.currNum);
-      wx.navigateTo({
-        url: '../pay/pay'
-      })
-    }
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

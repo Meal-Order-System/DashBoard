@@ -4,7 +4,7 @@
   <view >
     <view class="section-title">菜品分类</view>
     <view class="section">
-      <input name="type" placeholder="请输入类型索引" placeholder-class='ph'/>
+      <input name="type" placeholder="{{tipString}}" placeholder-class='ph'></input>
     </view>
   </view>
 
@@ -28,9 +28,13 @@
       <input name="detail" placeholder="" placeholder-class='ph'/>
     </view>
   </view>
-  
 
+  <view>
+    <view class="section-title">上传菜品图片</view>
+    <image class="upload-picture" wx:if="{{!uploadSuc}}" mode="widthFix" src='../../img/upload.jpg' bindtap='chooseWay'></image>
+    <image class="upload-picture" wx:if="{{uploadSuc}}" mode="widthFix" src="{{img_path}}">{{img-url}}</image>
 
+  </view>
   
   <view class="btn-area">
     <button formType="submit" class='button-setting'>提交</button>
