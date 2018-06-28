@@ -1,14 +1,14 @@
-##Software Architecture Document
+## Software Architecture Document
 
 | 版本 | 日期 | 描述 | 作者|
 | -- | -- | -- | -- |
 | 草案 | 2018.6.27 | 主要从架构问题、解决方案说明、逻辑视图、物理视图这四个方面进行描述 | 15331241毛 |
 
-###架构设计
+### 架构设计
 
 前后端分离开发，前端使用微信小程序框架，后端使用Node.js + MySQL进行开发。
 
-###解决方案说明
+### 解决方案说明
 
 问题：服务器响应性能较差。
 
@@ -25,10 +25,10 @@
 
 
 
-###逻辑视图
+### 逻辑视图
 
 ![逻辑视图](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/img/SAD.png)
 
-###物理视图
+### 物理视图
 
 ![物理视图](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/img/phy_img.png)
