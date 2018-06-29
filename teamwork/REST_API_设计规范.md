@@ -2,7 +2,7 @@
 
 ---
 
-&emsp;&emsp;In this section, We refer to an article named **《Principles of good RESTful API Design》** online, we can get what we want with the help of the following links: 
+&emsp;&emsp;In this section, We refer to an article named **《Principles of good RESTful API Design》** online, we could obtain all we need with the help of the following links: 
 
 ## &emsp;&emsp;[Principles of good RESTful API Design][1]
 
