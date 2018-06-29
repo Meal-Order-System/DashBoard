@@ -21,7 +21,8 @@
       "root": "packageRestaurant",
       "pages": [
         "pages/main/main",
-        "pages/add/add"
+        "pages/add/add",
+        "pages/change/change"
       ]
     }
   ],

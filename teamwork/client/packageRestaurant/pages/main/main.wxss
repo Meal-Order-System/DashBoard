@@ -87,12 +87,13 @@
   border-bottom: 1px solid #E3E3E3;
 }
 .food-image{
-  width:108rpx;
+  width:90px;
+  height:50px;
   margin-top:16rpx;
 }
 .food-image-box{
-  width:160rpx;
-  height:72px;
+  width:120rpx;
+  height:50px;
   text-align: center;
 }
 .menu{

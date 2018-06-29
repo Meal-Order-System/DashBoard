@@ -1,6 +1,7 @@
 var util = require('../../../utils/util.js');
+var apiURL ='https://meal.mlg.kim'
 var isPay=false;
-var isAdd=false;
+var isUpdate=false;
 Page({
 
   /**
@@ -16,8 +17,8 @@ Page({
             "orderDetail":[
               {
                 "foodID": 0,
-                "foodName": "平菇",
-                "foodPrice": 3.00,
+                "name": "平菇",
+                "price": 3.00,
                 "foodNum": 2,
                 "foodState":1
               }
@@ -29,8 +30,8 @@ Page({
             "orderDetail":[
               {
                 "foodID": 1,
-                "foodName": "花椰菜",
-                "foodPrice": 2,
+                "name": "花椰菜",
+                "price": 2,
                 "foodNum": 3,
                 "foodState":2
               }
@@ -50,15 +51,15 @@ Page({
             "orderDetail":[
               {
                 "foodID": 0,
-                "foodName": "平菇",
-                "foodPrice": 3.00,
+                "name": "平菇",
+                "price": 3.00,
                 "foodNum": 2,
                 "foodState":1
               },
               {
                 "foodID": 2,
-                "foodName": "猪里脊",
-                "foodPrice": 6,
+                "name": "猪里脊",
+                "price": 6,
                 "foodNum": 3,
                 "foodState":0
               }
@@ -78,39 +79,7 @@ Page({
         "orderNum":0
       }
     ],
-    foodList:[
-      {
-        "name": "素菜",
-        "list": [
-          {
-            foodID:0,
-            foodName: "平菇",
-            img_url: "",
-            foodDetail: "平菇",
-            foodPrice: 3.00
-          },
-          {
-            foodID:1,
-            foodName: "花椰菜",
-            img_url: "",
-            foodDetail: "绿色健康无公害",
-            foodPrice: 2.00
-          },
-        ]
-      },
-      {
-        "name": "荤菜",
-        "list": [
-          {
-            foodID:0,
-            foodName: "猪里脊",
-            img_url: "",
-            foodDetail: "肉类",
-            foodPrice: 6.00
-          }
-        ]
-      }
-    ],
+    foodList:[],
     orderList:[
       {
         'table': 3,
@@ -120,14 +89,14 @@ Page({
             "orderDetail":[
               {
                 "foodID": 0,
-                "foodName": "平菇",
-                "foodPrice": 3.00,
+                "name": "平菇",
+                "price": 3.00,
                 "foodNum": 2
               },
               {
                 "foodID": 2,
-                "foodName": "猪里脊",
-                "foodPrice": 6,
+                "name": "猪里脊",
+                "price": 6,
                 "foodNum": 3
               }
             ]
@@ -253,10 +222,10 @@ Page({
   deleteFood: function(e) {
     var foodtype=this.data.currType;
     var index=e.currentTarget.dataset.dish;
-    var list = this.data.foodList[foodtype].list;
+    var list = this.data.foodList[foodtype].foods;
    // console.log(list)
    // console.log("当前食品"+index)
-    var key="foodList["+foodtype+"].list";
+    var key="foodList["+foodtype+"].foods";
     if (index>-1) {
       list.splice(index,1);
     }
@@ -264,11 +233,7 @@ Page({
     this.setData({
       [key]:list
     })
-    console.log(this.data.foodList[foodtype].list)
-  },
-
-  changeFood:function(e) {
-
+    console.log(this.data.foodList[foodtype].foods)
   },
 
   selectType: function (e) {
@@ -279,13 +244,29 @@ Page({
     })
   },
   
-  toAdd:function() {
-      wx.setStorageSync('currFoodList', this.data.foodList)
-      wx.redirectTo({
-        url: '../add/add',
-      })
-      isAdd=true;
+  toAdd:function(e) {
+    wx.redirectTo({
+      url: '../add/add',
+    })
+    isUpdate=true;
   },
+
+  toChange:function(e) {
+    var foodtype = this.data.currType;
+    var foodindex = e.currentTarget.dataset.dish;
+    //console.log('查看食物类型'+foodtype)
+    //console.log('查看食物脚标'+foodindex)
+    if (foodindex > -1) {
+      console.log(this.data.foodList[foodtype].foods[foodindex])
+      wx.setStorageSync('currDish', this.data.foodList[foodtype].foods[foodindex])
+    } 
+    wx.redirectTo({
+      url: '../change/change',
+    })
+    isUpdate = true;
+  },
+
+  
 
   finishDish: function(e) {
     console.log(e.currentTarget.dataset.index)
@@ -297,7 +278,7 @@ Page({
     var table = this.data.tableList[tableid];
     var foodstate = table.orderList[order].orderDetail[foodid].state;
     var currCost=table.totalCost;
-    var currFoodPrice = table.orderList[order].orderDetail[foodid].foodPrice;
+    var currFoodPrice = table.orderList[order].orderDetail[foodid].price;
     var currFoodNum = table.orderList[order].orderDetail[foodid].foodNum;
     // 更新总消费金额
     currCost=currCost+currFoodNum*currFoodPrice;
@@ -311,9 +292,6 @@ Page({
     })
   },
 
-  dealWait: function(e) {
-    
-  },
 
   finishOrder: function(e) {
     var order = e.currentTarget.dataset.orderid;
@@ -337,7 +315,7 @@ Page({
     if (finishAll) {
       /*for (var item in currOrder) {
         var tmp = currOrder[item];
-        currCost = currCost + tmp.foodNum * tmp.foodPrice;
+        currCost = currCost + tmp.foodNum * tmp.price;
       }*/
 
       if (state == 0) {
@@ -460,15 +438,32 @@ Page({
         //console.log("窗口高度"+calc)
       },
     })
-    if(isAdd) {
+
+    wx.showLoading({
+      title: '努力加载中',
+    })
+    wx.request(
+      {
+        url: `${apiURL}/user/food`,
+        success: (res) => {
+          wx.hideLoading();
+          console.log(res.data);
+          that.setData({
+            foodList: res.data,
+            loading: true
+          })
+        }
+      })
+    /*if(isUpdate) {
       var list=wx.getStorageSync('newList');
       this.setData({
         foodList:list,
         currentTab:options.currentTab,
       })
-
-      isAdd = false;
-    }
+      console.log('show new list')
+      console.log(this.data.foodList)
+      isUpdate = false;
+    }*/
     for (var table in this.data.tableList) {
       var currCost = this.data.tableList[table].totalCost;
       var key = "tableList["+table+"].totalCost";
@@ -476,7 +471,7 @@ Page({
         for (var item in this.data.tableList[table].orderList[order].orderDetail) {
           var tmp = this.data.tableList[table].orderList[order].orderDetail[item];
           if (tmp.foodState==1) {
-            currCost = currCost+tmp.foodNum*tmp.foodPrice;
+            currCost = currCost+tmp.foodNum*tmp.price;
             this.setData({
               [key]:currCost,
             })

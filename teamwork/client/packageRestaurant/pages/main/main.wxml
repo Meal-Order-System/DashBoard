@@ -67,8 +67,8 @@
                 <view class='line-bottom-css'></view> 
                 <!--dish状态管理-->
                 <view class='food-info' wx:for="{{order.orderDetail}}" wx:for-item="dish" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}" wx:key="unique">
-                  <text class='food-name'>{{dish.foodName}}</text>
-                  <view class='food-price' decode="{{true}}" space="{{true}}">￥{{dish.foodPrice}}
+                  <text class='food-name'>{{dish.name}}</text>
+                  <view class='food-price' decode="{{true}}" space="{{true}}">￥{{dish.price}}
                     <text class='food-num'>X{{dish.foodNum}}</text>
                     <button wx:if="{{dish.foodState==0}}" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}" bindtap="finishDish" class='dishing'>制作中</button>
                     <button wx:if="{{dish.foodState==1}}" class='dish-finish'>已完成</button>
@@ -77,7 +77,7 @@
                     <button wx:if="{{dish.foodState==2}}" class='dish-wait' data-status="open" bindtap="powerDrawer">等待中</button>
                     <view class='drawer-screen' bindtap="powerDrawer" data-status="close" wx:if="{{showModalStatus}}"></view>
                     <view animation="{{animationData}}" class='drawer-box' wx:if="{{showModalStatus}}">
-                      <view class='drawer-title'>{{dish.foodName}}</view>
+                      <view class='drawer-title'>{{dish.name}}</view>
                         <view class='drawer-content' bindtap="powerDrawer" data-status="close">
                           <button class='deal-button' hover-class='hover-deal-button' bindtap="cancelDish" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}">取消</button>
                           <button class='deal-button' hover-class='hover-deal-button' bindtap="prepareDish" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}">准备</button>
@@ -107,18 +107,19 @@
       <view wx:for="{{foodList}}" wx:for-index="index" wx:key="unique">
         <view wx:if="{{index==currType}}" data-index="{{index}}" bindtap='selectType'>
 
-          <view class='type-content' wx:for="{{item.list}}" wx:key="unique" wx:for-item="food" wx:for-index="indexs"  data-dish="{{indexs}}">
+          <view class='type-content' wx:for="{{item.foods}}" wx:key="unique" wx:for-item="food" wx:for-index="indexs"  data-dish="{{indexs}}">
+            
             <view class='food-image-box'>
-              <image class='food-image' mode="widthFix" src="{{food.img_url}}">test{{food.img_url}}</image>
+              <image class='food-image' mode="heightFix" src="{{food.image_path}}"></image>
             </view>
 
             <view class='food-box'>
-              <view class='food-name'>{{food.foodName}}</view>
-              <view style='margin-right:20rpx;color:#F05A86'>¥{{food.foodPrice}} </view>
-              <!--删除菜品-->
-              <image class='trash-image'  data-dish="{{indexs}}" bindtap="deleteFood" src='../../img/trash.png' > </image>
-              <!--修改菜品
-              <image class='trash-image'  data-dish="{{indexs}}" bindtap="modifyFood" src='../../img/modify.jpg' > </image>-->
+              <view class='food-name'>{{food.name}}</view>
+              <view style='margin-right:20rpx;color:#F05A86'>¥{{food.price}} </view>
+              <!--删除菜品
+              <image class='trash-image'  data-dish="{{indexs}}" bindtap="deleteFood" src='../../img/trash.png' > </image>-->
+              <!--修改菜品-->
+              <image class='trash-image'  data-dish="{{indexs}}" bindtap="toChange" src='../../img/modify.jpg' > </image>
             </view>
 
           </view>

@@ -4,49 +4,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    foodList:[],
-    img_path:'',
-    uploadSuc:false,
+    currFood:{},
+    changeImage:false,
     url:'',
-    typeTip:'',
-    priceTip:'仅需要输入数字',
+    img_path:'',
+    uploadSuc:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var list=wx.getStorageSync('currFoodList');
-    var str='';
-    var count = 0;
-    //console.log('查看是添加还是修改'+modify) 
-    for(var item in list) {
-      var tmp = list[item];
-      if (count==0) {
-        str = '当前分类: ' + tmp.name;
-      } else {
-        str = str + '/' + tmp.name;
-      }
-      count = count + 1;
-    }
-    //console.log(str);
+    var curr=wx.getStorageSync('currDish');
     this.setData({
-      foodList:list,
-      typeTip:str,
+      currFood:curr,
     })
-
   },
 
   formSubmit: function (e) {
-    this.uploadImage().then(()=> {
-      var that = this;
-      var temp = e.detail.value;
-      //console.log(this.data);
-      //console.log(this.data.url);
-      //console.log('typename' + this.data.foodList[foodtype].name)
+
+    var temp = e.detail.value;
+    var mname=this.data.currFood.name;
+    var mdetail=this.data.currFood.detail;
+    var mclass=this.data.currFood.food_class;
+    var mprice=this.data.currFood.price;
+    if (temp.name) {
+      mname=temp.name
+    }
+    if(temp.detail) {
+      mdetail=temp.detail
+    }
+    if(temp.type) {
+      mclass=temp.type
+    }
+    if(temp.price) {
+      mprice=temp.price
+    }
+    if (this.data.changeImage) {
+      this.uploadImage().then(() => {
+        var that = this;
         wx.request({
           url: 'https://meal.mlg.kim/admin/updateFood',
-          data: { name: temp.name, food_class: temp.type, price: temp.price, detail: temp.detail, image_path: that.data.url },
+          data: { food_id:that.data.currFood.food_id, name: mname, food_class: mclass, price: mprice, detail: mdetail, image_path: that.data.url },
           method: 'POST',
           header: {
             "content-type": "application/x-www-form-urlencoded"
@@ -63,58 +62,66 @@ Page({
             console.log(res);
           }
         })
-      //新建条目
-      /*var item = [];
-      item = {
-        //'food_id': idcount + 1,
-        'foodName': tmp.name,
-        'foodPrice': tmp.price,
-        'foodDetail': tmp.detail,
-        'img_url': this.data.url
-      }*/
-     /* var key = 'foodList[' + foodtype + "].list"
-      typelist.push(item);
-      this.setData({
-        [key]: typelist,
-      }),
-      // console.log(this.data.foodList[foodtype].list)
-      wx.setStorageSync('newList', this.data.foodList);*/
-      wx.redirectTo({
-        url: '../main/main?currentTab=1',
       })
+
+    } else {
+        var that = this;
+        wx.request({
+          url: 'https://meal.mlg.kim/admin/updateFood',
+          data: { food_id: that.data.currFood.food_id, name: mname, food_class: mclass, price: mprice, detail: mdetail, image_path: that.data.currFood.image_path },
+          method: 'POST',
+          header: {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          success: function (res) {
+            //console.log(res);
+            wx.showToast({
+              title: '添加成功！',
+              icon: 'success',
+              duration: 2000
+            })
+          },
+          fail: function (res) {
+            console.log(res);
+          }
+        })
+    }
+    wx.redirectTo({
+      url: '../main/main?currentTab=1',
     })
   },
 
-  // 弹窗显示照片提交方式
-
-  chooseWay: function() {
+  chooseWay: function () {
+    this.setData({
+      changeImage:true,
+    })
     let that = this;
     wx.showActionSheet({
-      itemList: ['从相册中选择','拍照'],
-      itemColor:"#f7982a",
-      success: function(res) {
+      itemList: ['从相册中选择', '拍照'],
+      itemColor: "#f7982a",
+      success: function (res) {
         if (!res.cancel) {
-          if(res.tapIndex==0) {
+          if (res.tapIndex == 0) {
             that.chooseWxImage('album')
-          } else if(res.tapIndex==1) {
+          } else if (res.tapIndex == 1) {
             that.chooseWxImage('camera')
           }
         }
       }
     })
   },
-   
-   //获取照片
-  chooseWxImage:function(type) {
+
+  //获取照片
+  chooseWxImage: function (type) {
     let that = this;
     wx.chooseImage({
       sizeType: ['original', 'compressed'],
       sourceType: [type],
-      
+
       success: function (res) {
         //console.log(res);
         //console.log('test path')
-        var tempFilePaths = res.tempFilePaths; 
+        var tempFilePaths = res.tempFilePaths;
         that.setData({
           img_path: res.tempFilePaths[0],
           uploadSuc: true,
@@ -123,9 +130,9 @@ Page({
     })
   },
 
-  uploadImage:function() {
+  uploadImage: function () {
     var that = this;
-    const promise=new Promise((resolve)=> {
+    const promise = new Promise((resolve) => {
       wx.uploadFile({
         url: 'https://meal.mlg.kim/admin/uploadImg',
         filePath: that.data.img_path,
@@ -148,8 +155,6 @@ Page({
     })
     return promise;
   },
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
