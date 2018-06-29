@@ -7,7 +7,9 @@
         <text class='food-price'>¥{{item.price}}.00</text>
         <text class='food-num'>x{{item.number}}</text>
       
-        <button class='food-state'>{{item.statues}}</button>
+        <button class='food-state' wx:if="{{item.statues==0}}">制作中</button>
+        <button class='food-state' wx:if="{{item.statues==1}}">已完成</button>
+        <button class='food-state' wx:if="{{item.statues==2}}">等待中</button>
       </view>
     </view>
     <view class='order-cut' wx:if="{{cutMonney!=0}}">
