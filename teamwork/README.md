@@ -36,7 +36,7 @@
 - 8、生产规范与指南
   - [8.1 XX 代码规范](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/Code_Style_Specification.md)
   - [8.2 REST API 设计规范](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/REST_API_%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.md)
-  - [8.3 逻辑架构到应用程序映射指南]()
+  - [8.3 逻辑架构到应用程序映射指南](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/8.3逻辑架构到应用程序映射指南.md)
   - [8.4 物理架构云上部署dock-compose.yml文件编写与使用]()
 
 - X1 meet_recording
