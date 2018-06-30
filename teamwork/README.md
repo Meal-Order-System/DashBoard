@@ -36,6 +36,8 @@
 - 8、生产规范与指南
   - [8.1 XX 代码规范](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/Code_Style_Specification.md)
   - [8.2 REST API 设计规范](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/REST_API_%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.md)
+  - [8.3 逻辑架构到应用程序映射指南](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/8.3逻辑架构到应用程序映射指南.md)
+  - [8.4 物理架构云上部署dock-compose.yml文件编写与使用]()
 
 - X1 meet_recording
   - [inception meeting (2018/04/01)](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/X1_meeting_record.md)
@@ -50,3 +52,6 @@
   
     建模要求包括（用例图、Google翻译业务或用例的活动图、Google翻译领域模型、Google翻译对象的状态图、Google翻译场景的系统顺序图与操作协议）
   - [XX3 建模者答案与评价](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/XX3_%E5%BB%BA%E6%A8%A1%E8%80%85%E7%AD%94%E6%A1%88%E4%B8%8E%E8%AF%84%E4%BB%B7.md)
+
+- X3 Final Report
+  - [15331022 Final Report](https://blog.csdn.net/cjl707408282/article/details/80868669)
