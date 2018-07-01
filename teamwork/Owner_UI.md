@@ -6,13 +6,14 @@
 * [餐台管理界面](#商家管理界面)
 * [菜品管理界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/3.PNG)
 * [商家添加菜品界面](#商家添加菜品界面)
+* [商家修改菜品界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/5.PNG)
 
 
 ### 初始入口界面
 
 微信授权后的用户初始入口界面，上部为用户姓名和头像，中部为logo，下部分为两个入口：客人点餐入口和商家入口。
 
-![初始入口界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/IMG_5115.PNG)
+![初始入口界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/0.PNG)
 
 
 ### 餐台管理界面
