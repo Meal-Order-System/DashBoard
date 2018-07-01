@@ -27,6 +27,12 @@
 
 ## 个人分支的 GIT 统计报告
 
+因为我们组并没有将代码和文档分开成不同仓库，所以只有一个仓库。
+
+团队总体GIT统计：
+![all commits](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/img/commits.png)
+
+个人GIT统计：
 ![15331241 mzh commits](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/img/msoul_commits.png)
 
 
