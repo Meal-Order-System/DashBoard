@@ -1,3 +1,4 @@
+
 <view class="swiper-tab">
     <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">餐台管理
     </view>
@@ -11,6 +12,14 @@
     <!--餐台管理界面-->
     <swiper-item>
       <scroll-view scroll-y="true" class="scroll-h" style="height:{{winHeight+'px'}}">
+
+        <!--首次登陆获得商家的餐台数-->
+        <view wx:if='{{isfirst}}'>
+          <modal  hidden="{{hiddenModal}}" title="餐台号" confirm-text="提交" cancel-text="取消" bindconfirm = 'modelConfirm' bindcancel='modelCancel'>
+            <input placeholder='请输入您的餐台数' bindinput='input'/>
+          </modal>
+        </view>
+
        <view wx:for="{{tableList}}" wx:for-item="table" wx:key="unique">
         <view wx:for-index="index" data-index="{{index}}"  bindtap="toggleTable">
           <view class="table-cells">
@@ -69,12 +78,12 @@
                 <view class='food-info' wx:for="{{order.orderDetail}}" wx:for-item="dish" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}" wx:key="unique">
                   <text class='food-name'>{{dish.name}}</text>
                   <view class='food-price' decode="{{true}}" space="{{true}}">￥{{dish.price}}
-                    <text class='food-num'>X{{dish.foodNum}}</text>
-                    <button wx:if="{{dish.foodState==0}}" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}" bindtap="finishDish" class='dishing'>制作中</button>
-                    <button wx:if="{{dish.foodState==1}}" class='dish-finish'>已完成</button>
+                    <text class='food-num'>X{{dish.number}}</text>
+                    <button wx:if="{{dish.statues==0}}" data-index="{{index}}" data-orderid="{{orderindex}}" wx:for-index="foodindex" data-foodindex="{{foodindex}}" bindtap="finishDish" class='dishing'>制作中</button>
+                    <button wx:if="{{dish.statues==1}}" class='dish-finish'>已完成</button>
 
                     <!--开始制作||取消该菜品-->
-                    <button wx:if="{{dish.foodState==2}}" class='dish-wait' data-status="open" bindtap="powerDrawer">等待中</button>
+                    <button wx:if="{{dish.statues==2}}" class='dish-wait' data-status="open" bindtap="powerDrawer">等待中</button>
                     <view class='drawer-screen' bindtap="powerDrawer" data-status="close" wx:if="{{showModalStatus}}"></view>
                     <view animation="{{animationData}}" class='drawer-box' wx:if="{{showModalStatus}}">
                       <view class='drawer-title'>{{dish.name}}</view>

@@ -28,7 +28,21 @@
     <label class='record-id-num'> No.{{recordID}}</label>
   </view>
   <view class='record-item'>
-    <label class='order-time-txt'>订单时间</label>
+    <label class='order-time-txt'>下单时间</label>
     <label class='order-time-num'>{{orderTime}}</label>
   </view>
 </view>
+
+  <view class="operate-bar">
+    <view class='gouwuche'>
+      <view style='padding:5px;display:flex'>
+        <image class="gouwuche-icon" src='../../img/cart.png'>
+          <span class="number-msg" wx:if="{{cartList.length!=0}}">{{goodsNum}}</span>
+        </image>
+        <view class='gouwuche-price' style='color:white;font-size:18px'>¥ {{sumMoney-cutMoney}}.00</view>
+      </view>
+    </view>
+    <view class="submit-btn activity-color-bg" bindtap='toSuccess'>
+      <view class="submit-btn-label color-white">提交订单</view>
+    </view>
+  </view>

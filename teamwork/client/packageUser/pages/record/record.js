@@ -9,14 +9,21 @@ Page({
     recordList:[
     ],
     recordNum:0,
-    currIndex:0
+    currIndex:0,
+    openid:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData)
+    this.setData({
+      openid: app.globalData.openid
+    })
+    //console.log('当前openid'+this.data.openid)
     wx.request({
+      //url: `${apiURL}/user/order?openid=`+this.data.openid,
       url: `${apiURL}/user/order?openid=test`,
       success: (res) => {
         this.setData({
@@ -35,7 +42,7 @@ Page({
     }*/
 
     var data = wx.getStorageSync('reDetail');
-    console.log(data.orderTime);
+    //console.log(data.orderTime);
     var addItem = {
       "recordID": this.data.recordNum + 1,
       "orderTime": data.orderTime,

@@ -3,7 +3,8 @@
 const app = getApp()
 Page({
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid:''
   },
   data: {
     motto: '点餐',
@@ -33,8 +34,10 @@ Page({
 
   getUserInfo: function () {
     var openId = (wx.getStorageSync('openId'))
+    //console.log('openid: '+openId)
     var that = this;
     if (openId) {
+      getApp().globalData.openid = res.data.openid;
       wx.getUserInfo({
         success: function (res) {
           console.log(res);
@@ -56,7 +59,7 @@ Page({
     } else {
       wx.login({
         success: function (res) {
-          console.log(res.code)
+          //console.log(res.code)
           if (res.code) {
             wx.getUserInfo({
               withCredentials: true,
@@ -74,8 +77,10 @@ Page({
                     'content-type': 'application/json'
                   },
                   success: function (res) {
-                    console.log(res);
+                    //console.log(res.data.openid);
                     // this.globalData.userInfo = JSON.parse(res.data);
+                    getApp().globalData.openid = res.data.openid;
+
                     wx.getUserInfo({
                       success: function (res) {
                         console.log(res);
@@ -130,6 +135,8 @@ Page({
 
                                           })
                                           wx.setStorageSync('openId', res.data.openId);
+                                          getApp().gloabalData.openid=res.data.openId;
+
                                         }
                                       })
                                     }
@@ -156,6 +163,8 @@ Page({
       })
 
     }
+    //console.log('imagepath: '+getApp().globalData.userInfo.avatarUrl)
+    
   },
 
   

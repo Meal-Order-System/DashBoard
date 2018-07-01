@@ -11,7 +11,7 @@ Page({
     menuid:'menu',
     recordid:'record',
     userInfoid:'userInfo',
-    orderListid:'orderList'
+    orderListid:'orderList',
   },
 
   bindMenu:function () {
@@ -35,7 +35,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
   },
 
   /**

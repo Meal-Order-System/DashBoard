@@ -9,7 +9,7 @@ Page({
    */
   data: {
     tableList:[
-      {
+      /*{
         "tableID":1,
         "orderList":[
           {
@@ -19,7 +19,7 @@ Page({
                 "foodID": 0,
                 "name": "平菇",
                 "price": 3.00,
-                "foodNum": 2,
+                "number": 2,
                 "foodState":1
               }
             ],
@@ -32,7 +32,7 @@ Page({
                 "foodID": 1,
                 "name": "花椰菜",
                 "price": 2,
-                "foodNum": 3,
+                "number": 3,
                 "foodState":2
               }
             ],
@@ -53,14 +53,14 @@ Page({
                 "foodID": 0,
                 "name": "平菇",
                 "price": 3.00,
-                "foodNum": 2,
+                "number": 2,
                 "foodState":1
               },
               {
                 "foodID": 2,
                 "name": "猪里脊",
                 "price": 6,
-                "foodNum": 3,
+                "number": 3,
                 "foodState":0
               }
             ],
@@ -77,44 +77,59 @@ Page({
         "totalCost": 0,
         "tableState": 0,
         "orderNum":0
-      }
+      }*/
     ],
     foodList:[],
-    orderList:[
-      {
-        'table': 3,
-        'list': [
-          {
-            "orderID":1,
-            "orderDetail":[
-              {
-                "foodID": 0,
-                "name": "平菇",
-                "price": 3.00,
-                "foodNum": 2
-              },
-              {
-                "foodID": 2,
-                "name": "猪里脊",
-                "price": 6,
-                "foodNum": 3
-              }
-            ]
-          }
-        ],
-        'cost': 24,
-        'time': '2018-06-22 15:57',
-      }
-    ],
+    orderList:[],
     resName: '真香',
     currentTab: 0,
     scrollLeft: 0,
     winHeight:"",
     currTable:0,
-    showTable:[false,false,false],
-    tableNum:3,
+    showTable:[],
+    tableNum:7,
     currType:0,
     showModalStatus: false,
+    hiddenModal:false,
+    isfirst:true
+  },
+  input: function (e) {
+    this.setData({ tableNum: e.detail.value })
+  },
+
+  modelConfirm: function (e) {
+    this.setData({ hiddenModal: true })
+    let that = this;
+    if (this.data.tableNum) {
+      wx.showToast({
+        title: '您的餐台数为' + this.data.tableNum,
+        icon: 'none'
+      })
+
+      var boolarr = [];
+      for (var i = 0; i < this.data.tableNum; i++) {
+        console.log('test')
+        boolarr[i] = false;
+      }
+      this.setData({
+        showTable: boolarr,
+      })
+      //console.log(boolarr)
+    } else {
+      wx.showToast({
+        title: '您尚未输入餐台数！',
+        icon: 'none'
+      })
+    }
+    getApp().globalData.tableNum=this.data.tableNum;
+  },
+
+  modelCancel: function (e) {
+    this.setData({ hiddenModal: true })
+    wx.showToast({
+      title: '您尚未输入餐台数！',
+      icon: 'none'
+    })
   },
 
   powerDrawer: function(e) {
@@ -214,8 +229,8 @@ Page({
         [key]: 0,
       })
     }
-    console.log('current state')
-    console.log(this.data.tableList[tableid].orderList[orderid].orderDetail[dishid].foodState)
+    //console.log('current state')
+    //console.log(this.data.tableList[tableid].orderList[orderid].orderDetail[dishid].foodState)
   },
 
 
@@ -269,21 +284,21 @@ Page({
   
 
   finishDish: function(e) {
-    console.log(e.currentTarget.dataset.index)
+    //console.log(e.currentTarget.dataset.index)
     var order = e.currentTarget.dataset.orderid;
     var tableid = e.currentTarget.dataset.index;
     var foodid = e.currentTarget.dataset.foodindex;
 
 
     var table = this.data.tableList[tableid];
-    var foodstate = table.orderList[order].orderDetail[foodid].state;
+    var foodstate = table.orderList[order].orderDetail[foodid].statues;
     var currCost=table.totalCost;
     var currFoodPrice = table.orderList[order].orderDetail[foodid].price;
-    var currFoodNum = table.orderList[order].orderDetail[foodid].foodNum;
+    var currFoodNum = table.orderList[order].orderDetail[foodid].number;
     // 更新总消费金额
     currCost=currCost+currFoodNum*currFoodPrice;
 
-    var statekey="tableList["+tableid+"].orderList["+order+"].orderDetail.["+foodid+"].foodState";
+    var statekey="tableList["+tableid+"].orderList["+order+"].orderDetail.["+foodid+"].statues";
     var costkey="tableList["+tableid+"].totalCost";
 
     this.setData({
@@ -307,7 +322,7 @@ Page({
     var finishAll=true;
     for(var item in currOrder) {
       var tmp = currOrder[item];
-      if (tmp.foodState!=1) {
+      if (tmp.statues!=1) {
           finishAll=false;
           break;
       }
@@ -315,7 +330,7 @@ Page({
     if (finishAll) {
       /*for (var item in currOrder) {
         var tmp = currOrder[item];
-        currCost = currCost + tmp.foodNum * tmp.price;
+        currCost = currCost + tmp.number * tmp.price;
       }*/
 
       if (state == 0) {
@@ -368,7 +383,7 @@ Page({
       content: '确认用户已支付？',
       success: function (res) {
         if (res.confirm) {
-          console.log('点击确定')
+         // console.log('点击确定')
           var index = e.currentTarget.dataset.index;
           var key = "tableList[" + index + "]";
           let tmpid = that.data.tableList[index].tableID;
@@ -400,7 +415,7 @@ Page({
             [orderNum]: 0
           })
         } else if (res.cancel) {
-          console.log('点击取消')
+        //  console.log('点击取消')
         }
       }
     }),
@@ -424,6 +439,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      isfirst:false,
+    })
     var that=this;
     wx.getSystemInfo({
       success: function(res) {
@@ -439,48 +457,131 @@ Page({
       },
     })
 
-    wx.showLoading({
-      title: '努力加载中',
-    })
-    wx.request(
-      {
+    wx.request({
         url: `${apiURL}/user/food`,
         success: (res) => {
           wx.hideLoading();
-          console.log(res.data);
+          //console.log(res.data);
           that.setData({
             foodList: res.data,
             loading: true
           })
         }
-      })
-    /*if(isUpdate) {
-      var list=wx.getStorageSync('newList');
-      this.setData({
-        foodList:list,
-        currentTab:options.currentTab,
-      })
-      console.log('show new list')
-      console.log(this.data.foodList)
-      isUpdate = false;
-    }*/
-    for (var table in this.data.tableList) {
-      var currCost = this.data.tableList[table].totalCost;
-      var key = "tableList["+table+"].totalCost";
-      for (var order in this.data.tableList[table].orderList) {
-        for (var item in this.data.tableList[table].orderList[order].orderDetail) {
-          var tmp = this.data.tableList[table].orderList[order].orderDetail[item];
-          if (tmp.foodState==1) {
-            currCost = currCost+tmp.foodNum*tmp.price;
-            this.setData({
-              [key]:currCost,
-            })
-          }
+    })
+
+    //初始化餐台
+    //console.log(that.data)
+    var tablenum = that.data.tableNum
+    var list1 = that.data.tableList;
+    for (var i = 0; i < tablenum; i++) {
+      if (!list1[i]) {
+        var item = {
+          "tableID": i + 1,
+          "orderList": [],
+          "tableState": 0,
+          "orderNum": 0,
+          "totalCost": 0,
         }
+        list1[i] = item
       }
     }
+    that.setData({
+      tableList: list1,
+    })
+
+    this.getTableInfo().then(()=> {
+      var tstate = 0;
+      // 计算cost
+      for (var table in that.data.tableList) {
+        var currCost = that.data.tableList[table].totalCost;
+        var key = "tableList[" + table + "].totalCost";
+        var statekey = "tableList[" + table + "].tableState";
+        //console.log(that.data.tableList[table])
+        for (var order in that.data.tableList[table].orderList) {
+          //console.log('order循环')
+          var teststate = 0;
+
+          for (var item in that.data.tableList[table].orderList[order].orderDetail) {
+
+            //console.log('dish循环')
+            var tmp = that.data.tableList[table].orderList[order].orderDetail[item];
+            if (that.data.tableList[table].orderList[order].orderState == 0) {
+              teststate++;
+            }
+            if (tmp.foodState == 1) {
+              currCost = currCost + tmp.number * tmp.price;
+              that.setData({
+                [key]: currCost,
+              })
+            }
+
+          }
+          if (teststate == 0) {
+            that.setData({
+              [statekey]: 2
+            })
+          } else {
+            that.setData({
+              [statekey]: 1
+            })
+          }
+          //console.log('current state:' + that.data.tableState)
+        }
+      }}
+    )
   },
   
+  getTableInfo: function() {
+    var that = this;
+    const promise = new Promise((resolve) => {
+      wx.request({
+      url: `https://meal.mlg.kim/admin/order?openid=test`,
+      success: (res) => {
+        //console.log(res)
+        var data = res.data;
+        for (var item in data) {
+          var tmp = data[item];
+          // 未结账订单
+          if (!tmp.orderPayed) {
+            var currtable = that.data.tableList[tmp.desk_num - 1];
+            // 判断当前订单的状态
+            var finishAll = true;
+            for (var dish in tmp.currCart) {
+              var tmpfood = tmp.currCart[dish];
+              if (tmpfood.statues != 1) {
+                finishAll = false;
+                break;
+              }
+            }
+            var orderstate = 0;
+            if (finishAll) {
+              orderstate = 1;
+            }
+            // 当前餐台已有订单
+            
+            if (currtable) {
+              var indexnum=tmp.desk_num-1;
+              var key ='tableList['+indexnum+'].orderList'
+              var orderitem = {
+                "orderID": ++currtable.orderNum,
+                "orderDetail": tmp.currCart,
+                "orderState": orderstate,
+              }
+              var list = currtable.orderList;
+              list.push(orderitem);
+              that.setData({
+                [key]:list,
+              })
+            } 
+          }
+        }
+        resolve()
+        //console.log(that.data.tableList)
+      },
+    })
+    })
+    return promise;
+  },
   //点击切换
   clickTab: function (e) {
     var that = this;

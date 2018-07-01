@@ -25,16 +25,16 @@ Page({
 
   selectMenu: function (e) {
     var index = e.currentTarget.dataset.index
-    console.log(index)
+    //console.log(index)
     this.setData({
       activeIndex: index,
       toView: 'a' + index,
       // scrollTop: 1186
     })
-    console.log(this.data.toView);
+    //console.log(this.data.toView);
   },
   scroll: function (e) {
-    console.log(e)
+    //console.log(e)
     var dis = e.detail.scrollTop
     if (dis > 0 && dis < 1189) {
       this.setData({
@@ -97,6 +97,7 @@ Page({
     var a = this.data
     var isAdd = true;
     var addItem = {
+      "id": a.listData[a.currentType].foods[a.currentIndex].food_id,
       "name": a.listData[a.currentType].foods[a.currentIndex].name,
       "price": a.listData[a.currentType].foods[a.currentIndex].price,
       "number": 1,
@@ -106,7 +107,7 @@ Page({
     var cartList = this.data.cartList;
     for (var i = 0; i < cartList.length; i++) {
       if (cartList[i].name == addItem.name) {
-        console.log(1);
+        //console.log(1);
         isAdd = false;
         cartList[i].number++;
         cartList[i].sum += cartList[i].price;
@@ -121,10 +122,10 @@ Page({
       sumMonney: sumMonney,
       totalNum: a.totalNum + 1
     });
-    console.log(this.data.cartList)
+    ////console.log(this.data.cartList)
   },
   showCartList: function () {
-    console.log(this.data.showCart)
+    ////console.log(this.data.showCart)
     if (this.data.cartList.length != 0) {
       this.setData({
         showCart: !this.data.showCart,
@@ -142,7 +143,7 @@ Page({
   },
   addNumber: function (e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index)
+    ////console.log(index)
     var cartList = this.data.cartList;
     cartList[index].number++;
     var sum = this.data.sumMonney + cartList[index].price;
@@ -156,7 +157,7 @@ Page({
   },
   decNumber: function (e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index)
+    //console.log(index)
     var cartList = this.data.cartList;
 
     var sum = this.data.sumMonney - cartList[index].price;
@@ -180,12 +181,12 @@ Page({
     }
   },
   toDetail(e) {
-    //console.log("before click" + " " + ifAdd);
+    ////console.log("before click" + " " + ifAdd);
     if (!ifAdd) {
-      //console.log(ifAdd);
+      ////console.log(ifAdd);
       var dish_type = e.currentTarget.dataset.type;
       var index = e.currentTarget.dataset.index;
-      console.log("获取所选择的菜品"+dish_type+index)
+      //console.log("获取所选择的菜品"+dish_type+index)
       this.setData({
         currentType: dish_type,
         currentIndex: index
@@ -212,7 +213,7 @@ Page({
       url:`${apiURL}/user/food`,
       success: (res) => {
         wx.hideLoading();
-        console.log(res.data);
+        //console.log(res.data);
         that.setData({
           listData: res.data,
           loading: true

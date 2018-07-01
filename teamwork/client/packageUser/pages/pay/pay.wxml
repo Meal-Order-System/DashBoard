@@ -41,9 +41,12 @@
         <view class='gouwuche-price' style='color:white;font-size:18px'>¥ {{sumMonney-cutMonney}}.00</view>
       </view>
     </view>
-    <view class="submit-btn activity-color-bg" bindtap='goSuccess'>
-      <view class="submit-btn-label color-white">去支付</view>
+    <view class="submit-btn activity-color-bg" bindtap='showModal'>
+      <view class="submit-btn-label color-white">提交订单</view>
     </view>
+    <modal hidden="{{hiddenModal}}" title="餐台号" confirm-text="提交" cancel-text="取消" bindconfirm = 'modelConfirm' bindcancel='modelCancel'>
+      <input placeholder='请输入您的餐台号' bindinput='input'/>
+    </modal>
   </view>
 
 </view>
