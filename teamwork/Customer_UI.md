@@ -56,6 +56,10 @@
 
 ### 历史订单界面
 
-用户可在历史订单界面查看自己下过的订单详情。
+用户可在历史订单界面查看自己下过的订单列表。
 
 ![历史订单界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/IMG_5121.PNG)
+
+选择想要查看的订单即可查看订单的详情。
+
+![订单详情](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/IMG_5122.PNG)
