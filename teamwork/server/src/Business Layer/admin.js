@@ -10,7 +10,12 @@ var appid = "";
 var secret = "";
 
 check_login = function(openid){
-	return true;
+	user_data.query_user(openid, function(result){
+		if(!result[0] || result[0].admin == 0){
+			return false;
+		}
+		return true;	
+	});
 };
 
 router.post("/uploadImg", function (req, res, next) {

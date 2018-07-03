@@ -40,7 +40,8 @@ router.get('/login', function (req, res, next) {
 						});
 					}else{
 						data = {
-							openid: list.openid
+							openid: list.openid,
+							admin: result[0].admin
 						}
 						res.set('Content-Type', 'application/json');
 						res.set('charset', 'utf-8');
