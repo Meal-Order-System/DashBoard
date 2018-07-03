@@ -3,10 +3,9 @@
 商家端UI基本界面与市场上已有的点餐软件类似，包括
 
 * [初始入口界面](#初始入口界面)
-* [餐台管理界面](#商家管理界面)
-* [菜品管理界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/3.PNG)
+* [餐台管理界面（含具体用例说明）](#餐台管理界面)
 * [商家添加菜品界面](#商家添加菜品界面)
-* [商家修改菜品界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/5.PNG)
+* [商家修改菜品界面](#商家修改菜品信息界面)
 
 
 ### 初始入口界面
@@ -86,7 +85,7 @@
 
 ![图片预览](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/8.PNG)
 
-②商家修改菜品信息界面
+### 商家修改菜品信息界面
 
 ![修改菜品界面](https://github.com/Meal-Order-System/DashBoard/blob/master/teamwork/snapshot/5.PNG)
 
