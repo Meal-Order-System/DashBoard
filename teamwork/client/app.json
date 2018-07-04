@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+
+  "subPackages": [
+    {
+      "root": "packageUser",
+      "pages": [
+        "pages/main/main",
+        "pages/dish/dish",
+        "pages/menu/menu",
+        "pages/pay/pay",
+        "pages/success/success",
+        "pages/record/record",
+        "pages/orderDetail/orderDetail"
+      ]
+    },
+    {
+      "root": "packageRestaurant",
+      "pages": [
+        "pages/main/main",
+        "pages/add/add",
+        "pages/change/change"
+      ]
+    }
+  ],
+  
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

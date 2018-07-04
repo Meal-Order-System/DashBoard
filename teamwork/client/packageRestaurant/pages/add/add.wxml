@@ -1,0 +1,41 @@
+<form bindsubmit="formSubmit">
+  
+  <view >
+    <view class="section-title">菜品分类</view>
+    <view class="section">
+      <input name="type" placeholder="{{typeTip}}" placeholder-class='ph'></input>
+    </view>
+  </view>
+
+  <view>
+    <view class="section-title">菜品名称</view>
+    <view class="section">
+      <input name="name" placeholder="" placeholder-class='ph'/>
+    </view>
+  </view>
+
+  <view>
+    <view class="section-title">菜品价格</view>
+    <view class="section"> 
+      <input name="price" placeholder="{{priceTip}}" placeholder-class='ph'/>
+    </view>
+  </view>
+
+  <view>
+    <view class="section-title">菜品简介</view>
+    <view class="section">
+      <input name="detail" placeholder="" placeholder-class='ph'/>
+    </view>
+  </view>
+
+  <view>
+    <view class="section-title">上传菜品图片</view>
+      <image class="upload-picture" wx:if="{{!uploadSuc}}" mode="widthFix" src='../../img/upload.jpg' bindtap='chooseWay'></image>
+    <image class="upload-picture" wx:if="{{uploadSuc}}" mode="widthFix" src="{{img_path}}"></image>
+  </view>
+
+  <view class="btn-area">
+    <button formType="submit" class='button-setting'>提交</button>
+  </view>
+  
+</form>

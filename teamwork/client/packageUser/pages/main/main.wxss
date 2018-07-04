@@ -1,0 +1,85 @@
+/* pages/main/main.wxss */
+
+/* pages/main/main.wxss */
+
+page {
+  display: block;
+  min-height: 100%;
+  
+}
+
+.container {
+  margin-top:20%;
+  align-items: center;
+  font-size: 15px;
+}
+
+.radio {
+  text-align: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  color: black;
+  padding-top: 4px;
+  width: 50px;
+  height: 46px;
+  transition: all 1.0s;
+  background-position: 50% 50%;
+  background-size: 50px 50px;
+}
+
+#menu {
+  position: relative;
+  float:left;
+  right:0px;
+  bottom: -70px;
+  color: transparent;
+}
+
+#record {
+  position: relative;
+  float:right;
+  left:0px;
+  bottom: 0px;
+  color: transparent;
+}
+
+#userInfo  {
+  position: relative;
+  float:right;
+  left:0px;
+  bottom: 80px;
+  color: transparent;
+}
+
+#menu-display {
+  position: relative;
+  float:left;
+  right:100px;
+  bottom:0px;
+  background-image: url('https://meal.mlg.kim//images/OlYKxSwXrerGqeMXRjSZykn_.png');
+}
+
+#record-display {
+  position: relative;
+  float:right;
+  left:100px;
+  bottom: 70px;
+  background-image: url('https://meal.mlg.kim//images/YQTsBk45lPRvCjIHfzFuowGm.png');
+}
+
+#userInfo-display  {
+  position: relative;
+  float:right;
+  left:0px;
+  bottom: 0px;
+  background-image: url('https://meal.mlg.kim//images/oEwV_rI-6STkcoKf2YSH-tj-.png');
+}
+
+.logo {
+  float:left;
+  position: absolute;
+  margin-top: 50px;
+  width: 200rpx;
+  height: 200rpx;
+}
