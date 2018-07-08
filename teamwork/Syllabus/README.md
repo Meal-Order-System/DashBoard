@@ -12,4 +12,4 @@
 
 ## 数据库代码
 [
-/DashBoard/teamwork/database](https://github.com/Meal-Order-System/DashBoard/tree/master/teamwork/Database)
+/DashBoard/teamwork/database](https://github.com/Meal-Order-System/DashBoard/tree/master/teamwork/DataBase)
