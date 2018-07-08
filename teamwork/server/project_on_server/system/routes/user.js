@@ -9,6 +9,10 @@ var order_data = require('../database/order_data');
 var appid = "wx7c23c5d2c5dbbab1";
 var secret = "9051d8e80c67730540d118db18b32c9a";
 
+
+/*
+ * 用户登录
+ */
 router.get('/login', function (req, res, next) {
 	console.log(req.query);
 	var req_data = req.query;
@@ -62,6 +66,10 @@ router.get('/login', function (req, res, next) {
 });
 
 
+/*
+ * 用户查看菜单
+ * 当发送的json带有food_id时，返回带评论的食物详细信息
+ */
 router.get('/food', function (req, res, next) {
 	console.log(req.query);
 	if(!req.query.food_id){
@@ -105,7 +113,9 @@ router.get('/food', function (req, res, next) {
 	}
 });
 
-
+/*
+ * 用户查看历史订单
+ */
 router.get('/order', function (req, res, next) {
 	if(!req.query.openid){
 		res.set('Content-Type', 'application/json');
@@ -148,7 +158,9 @@ router.get('/order', function (req, res, next) {
 	}
 });
 
-
+/*
+ * 上传图片
+ */
 router.post('/new_order', function (req, res, next) {
 	var order = req.body.order;
 	var openid = req.body.openid;
@@ -199,6 +211,10 @@ router.post('/new_order', function (req, res, next) {
 	});
 });
 
+
+/*
+ * 修改订单信息
+ */
 router.post("/change_order", function(req, res, next){
 	var operation = req.body.operation;
 	var order_id = req.body.order_id;
@@ -269,6 +285,10 @@ router.post("/change_order", function(req, res, next){
 	fun_list[0](0);
 });
 
+
+/*
+ * 为食品添加评论
+ */
 router.post("/comment", function(req, res, next){
 	food_data.add_comment(req.body.user_name, req.body.rank, req.body.comment, req.body.food_id, function(result_comment){
 		food_data.get_food_detail(req.body.food_id, function(result){
