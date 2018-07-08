@@ -8,7 +8,9 @@ var connection = mysql.createConnection({
  	database: 'meal_order_system', 
 }); 
 
-
+/*
+ * 查询某个用户是否已经存在数据库中
+ */
 query_user = function(openid, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -23,6 +25,10 @@ query_user = function(openid, callback){
 	connection.end();
 }
 
+
+/*
+ * 添加用户信息
+ */
 add_user = function (openid, session_key, callback) {
 	connection = mysql.createConnection(connection.config);
 	connection.connect();

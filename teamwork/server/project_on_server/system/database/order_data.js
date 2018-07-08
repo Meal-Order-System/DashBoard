@@ -11,7 +11,9 @@ var connection = mysql.createConnection({
 
 
 
-
+/*
+ * 根据用户id获取用户订单信息
+ */
 get_order = function(openid, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -26,6 +28,10 @@ get_order = function(openid, callback){
 	connection.end();
 }
 
+
+/*
+ * 获取所有用户订单信息，商家用
+ */
 get_order_all = function(callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -40,6 +46,10 @@ get_order_all = function(callback){
 	connection.end();
 }
 
+
+/*
+ * 根据订单id获取订单信息
+ */
 get_order_by_id = function(order_id, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -55,7 +65,9 @@ get_order_by_id = function(order_id, callback){
 }
 
 
-
+/*
+ * 获取单件食品的订单信息（可用于统计销量）
+ */
 get_order_detail = function (food_id, callback) {
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -76,7 +88,9 @@ get_order_detail = function (food_id, callback) {
 	connection.end();
 }
 
-
+/*
+ * 创建新订单
+ */
 create_order = function(id, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -95,6 +109,11 @@ create_order = function(id, callback){
 	connection.end();
 }
 
+
+/*
+ * 往订单中添加食物
+ * 区别于food_data中的添加食物，此处并未改变商店所提供的食品
+ */
 add_food = function(food_id, num, order_id, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -110,6 +129,10 @@ add_food = function(food_id, num, order_id, callback){
 	connection.end();
 }
 
+/*
+ * 修改订单中食物数量
+ * 区别于food_data中的修改食物，此处并未改变商店所提供的食品
+ */
 update_food = function(food_id, num, statues, order_id, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -126,6 +149,10 @@ update_food = function(food_id, num, statues, order_id, callback){
 
 }
 
+
+/*
+ * 删除订单中食物
+ */
 delete_food = function(food_id, order_id, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();
@@ -141,6 +168,10 @@ delete_food = function(food_id, order_id, callback){
 	connection.end();
 }
 
+/*
+ * 更新订单信息
+ * 所有更新操作均由业务层完成，由此处提供接口
+ */
 update_order = function(sum, cut, num,  desk_num, order_id, pay, callback){
 	connection = mysql.createConnection(connection.config);
 	connection.connect();

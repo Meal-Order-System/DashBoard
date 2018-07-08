@@ -9,6 +9,10 @@ var order_data = require('../database/order_data');
 var appid = "";
 var secret = "";
 
+
+/*
+ * 判断该用户是否为管理员，此处指商家
+ */
 check_login = function(openid){
 	user_data.query_user(openid, function(result){
 		if(!result[0] || result[0].admin == 0){
@@ -18,6 +22,10 @@ check_login = function(openid){
 	});
 };
 
+
+/*
+ * 上传图片
+ */
 router.post("/uploadImg", function (req, res, next) {
 	if(!check_login(req.body.openid)){
 		res.set('Content-Type', 'application/json');
@@ -51,7 +59,9 @@ router.post("/uploadImg", function (req, res, next) {
 	});
 });
 
-
+/*
+ * 更新食物信息
+ */
 router.post("/updateFood", function (req, res, next) {
 	if(!check_login(req.body.openid)){
 		res.set('Content-Type', 'application/json');
@@ -79,7 +89,9 @@ router.post("/updateFood", function (req, res, next) {
 	}
 });
 
-
+/*
+ * 商家用端口，获取所有订单
+ */
 router.get('/order', function (req, res, next) {
 	if(!check_login(req.body.openid)){
 		res.set('Content-Type', 'application/json');
@@ -120,6 +132,9 @@ router.get('/order', function (req, res, next) {
 	});
 });
 
+/*
+ * 修改订单信息
+ */
 router.post("/change_order", function(req, res, next){
 	if(!check_login(req.body.openid)){
 		res.set('Content-Type', 'application/json');
